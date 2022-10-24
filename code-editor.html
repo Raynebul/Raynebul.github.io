@@ -24,41 +24,47 @@
         </nav>
         </div>
   </header>
-  <main>
+   <main>
     <div class="top">
       <div class="settings">
-      <p>Проект:</p>
-      <p>от:</p>
+      <span id="Project">Проект: #ProjectName</span>
+      <span id="Username">от: #UserName</span>
       </div>
       <div class="buttons">
         <div id="run">Выполнить</div>
 				<div class="button">Сохранить</div>
-				<div class="button">Очистить</div>
+				<div class="button">Настройки</div>
       </div>
     </div>
-     <hr>
-    <div class ="SQL-panel">
-      <div class="elem1">
+
+     <div class="middle">
+        <div class = "SQLScript">
+                <div class="elem1">
       <div class="sqlsquare1">
         <p>SQL Script</p>
       </div>
         <div class ="clear"><p>Очистить</p></div>
         </div>
-      <div class="elem2">
+
+    <div class="script">
+      <textarea>
+      </textarea>
+    </div>
+
+      </div>
+        <div class = "SQLQuery">
+          <div class="elem2">
       <div class="sqlsquare2">
         <p>SQL Query</p>
       </div>
         <div class ="clear"><p>Очистить</p></div>
       </div>
-     </div>
-    <div class="SQL-container">
-		<div class="script">
-      <p></p>
-    </div>
-    <aside class="query">
-      <p></p>
+              <aside class="query">
+        <textarea>
+      </textarea>
       </aside>
-    </div>
+        </div>
+      </div>
      <hr id="secondline">
     <div class="output">
     <div class="panel"><nav>
@@ -71,7 +77,7 @@
     </div>
       </main>
    <footer>
-        <p>Тестовый макет на HTML и CSS</p>
+        <span>Тестовый макет на HTML и CSS</span>
       </footer>
   </div>
 </body> 
