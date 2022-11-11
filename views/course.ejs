@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/course-style.css">
+  <title>Тренажёр</title>
+</head>
+<body> 
+  <script src="/js/code-script.js"></script>
+  <div class="wrapper">
+    <%- include('blocks/header') -%>
+    <main>
+
+        <!-- свойства для блока, содержащего контент модального окна -->
+        <div id="openProfile" class="modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="leftblocklogin">
+  
+              </div>
+              <div class="rightblocklogin">
+                <a href="#close" title="Close" class="close">×</a>
+                <div class="login">
+              <div class="modal-header">
+                <h3 class="modal-title">Авторизация</h3>
+              </div>
+              <div class="modal-body">
+                <input id="userLogin" type="text" placeholder="Введите логин или почту">
+                <input id="userPassword" type="password" placeholder="Введите пароль">
+                <div class="switchbox"><label class="switch" style="font-size: 0.7rem">
+                  <input type="checkbox">
+                  <span class="slider-round"></span>
+                </label>
+                <span id="rememberme">Запомнить меня</span>
+              </div>
+                <div class="modal-options">
+                  <button id="enter">Вход</button>
+                  <button class="register">Регистрация</button>
+                  <button class="forget">Забыли пароль?</button>
+                </div>
+              </div>
+            </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <!--  свойства для блока, содержащего контент модального окна -->
+
+
+      <div class="choicecourse">
+        <span>all</span>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+      </div>
+      <div class="workpanel">
+      <div class ="SQL-panel">
+   <div class="elem1">
+   <div class="sqlsquare1">
+     <p>SQL Script</p>
+   </div>
+     <div class="sqlsquare2">
+     <p>SQL Query</p>
+   </div>
+     <div class="elem2">
+     <button class ="clear" onclick="eraseTheText('outputSQLScript')">Очистить</button>
+     <button id="run" onclick="runCode()">Выполнить</button>
+     </div>
+     </div>
+
+        </div>
+      <div class="SQL-container">
+        
+ <div class="script">
+    <textarea id="outputSQLScript">
+   </textarea>
+ </div>
+ </div>
+      <div class= "bottompanel">
+      <div class="output">
+ <div class="panel"><nav>
+     <a href="#" class="active">Data output</a>
+     <a href="#">Data tables</a>
+     <a href="#">Messages</a>
+     </nav>
+     </div>
+   <p></p>
+ </div>
+        </div>
+      </div>
+      <div class="workpanel2">
+         <div class = "elem3">
+          <span>1. 1. Введение в SQL</span>
+        </div>
+        
+    <div class="task">
+      <div class = "taskpanel">
+        <span>Задание</span>           
+        </div>
+    </div>
+      <div class="answer">
+            <div class="completed"><span>Задание выполнено!</span></div>
+            <button class="continue">Дальше</button>
+          </div>
+ </div>
+             </main>
+   <%- include('blocks/footer') -%>
+</div>
+</body> 
+</html>
