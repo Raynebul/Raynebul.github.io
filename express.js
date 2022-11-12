@@ -28,7 +28,7 @@ const db = new sqlite3.Database('./data.db')
 // sql = `INSERT INTO users(username, email, password) VALUES (?, ?, ?)`
 // db.run(
 //     sql,
-//     ["Anton", "anton2@gmail.com", "123456"], 
+//     ["Sergey", "sergey@gmail.com", "bjhei23"], 
 //     (err) => {
 //     if (err) return console.error(err.message);
 // });
