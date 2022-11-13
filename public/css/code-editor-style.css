@@ -302,6 +302,12 @@ footer {
   height: 400px;
 }
 
+.blocksettings {
+  margin-left: 40px;
+  width: 100%;
+  height: 400px;
+}
+
 }
 /* свойства для заголовка модального окна */
 .modal-header {
@@ -346,7 +352,7 @@ footer {
 }
 /* свойства для блока, содержащего основное содержимое окна */
 .modal-body {
-position: relative;
+  position: relative;
   flex: 1 1 auto;
   padding: 15px;
   overflow: auto; 
@@ -455,4 +461,21 @@ position: relative;
 .forget, .register {
   background-color: #fff;
   color: #7c898a;
+}
+
+.description {
+  width: 600px;
+  height: 150px;
+  border-radius: 5px;
+  border-color:#808C9D;
+  background-color:#B6BEC0;
+}
+
+.settings-name-project {
+  flex: column;
+  display: flex;
+}
+
+#autosave, #private {
+  margin-right: 10px;
 }

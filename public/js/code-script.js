@@ -11,10 +11,10 @@ function eraseTheText(string) {
   alert("Выполнение кода");
  } 
 
- document.getElementById('enter').onclick =function() {
+ /* document.getElementById('enter').onclick =function() {
    var usernameCookie = document.getElementById('userLogin').value;
    var passwordCookie = document.getElementById('userPassword').value;
 
    var cookie =  `${usernameCookie}=${passwordCookie}`;
-   document.cookie = cookie;
-};
+   document.cookie = cookie; 
+}; */
