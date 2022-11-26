@@ -469,13 +469,49 @@ footer {
   border-radius: 5px;
   border-color:#808C9D;
   background-color:#B6BEC0;
+
+  padding-bottom: auto;
+  padding-left: 5px;
 }
 
-.settings-name-project {
-  flex: column;
-  display: flex;
+
+.settingsnameproject>span {
+  display: block;
+  
+ /* margin-bottom: auto;
+  padding-bottom: auto; */
+} 
+
+#Projectnamesetting {
+  margin-bottom: auto;
+  padding: 0;
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#Profilenamesetting {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#Descriptionsetting {
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 15px;
 }
 
 #autosave, #private {
   margin-right: 10px;
+  margin-top: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#h1settings {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: auto;
+  margin-top: 10px;
+  text-decoration: underline;
 }

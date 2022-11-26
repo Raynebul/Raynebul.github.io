@@ -9,6 +9,7 @@
 </head>
 <body> 
   <script src="/js/code-script.js"></script>
+  <script src="/js/cousre-editor-base.js"></script>
   <div class="wrapper">
  <%- include('blocks/header') -%>
     <main>
@@ -23,20 +24,20 @@
             <div class="modal-content">
               <div class="blocksettings"> 
               <a href="#close" title="Close" class="close">×</a>
-              <h1>Настройки</h1>
-              <div class="settings-name-project">
-              <span>Проект: #ProjectName</span>
-              <span>от: #UserName</span>
-              <span>Описание проекта: </span>
+              <p id="h1settings">Настройки</p>
+              <div class="settingsnameproject">
+              <span id="Projectnamesetting">Проект: #ProjectName</span>
+              <span id="Profilenamesetting">от: <%= username %></span>
+              <span id="Descriptionsetting">Описание проекта: </span>
               </div>
-              <input class="description" type="text" placeholder="Описание проекта"></input>
-              <span id="autosave">Автосохранения</span>
+              <textarea class="description" type="text" placeholder="Введите текст"></textarea>
+              <p id="autosave">Автосохранения</p>
               <div class="switchbox"><label class="switch" style="font-size: 0.7rem">
                 <input type="checkbox">
                 <span class="slider-round"></span>
               </label>
               </div>
-              <span id="private">Приватный</span>
+              <p id="private">Приватный</p>
               <div class="switchbox"><label class="switch" style="font-size: 0.7rem">
               <input type="checkbox">
               <span class="slider-round"></span>
@@ -53,7 +54,7 @@
      <div class="top">
        <div class="settings">
        <span id="Project">Проект: #ProjectName</span>
-       <span id="Username">от: #UserName</span>
+       <span id="Username">от: <%= username %></span>
        </div>
        <div class="buttons">
          <button class="run1" onclick="runCode()"><div id="run">Выполнить</div></button>

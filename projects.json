@@ -1,0 +1,17 @@
+[
+   {
+     "project_name": "Test",
+     "author_user": "Anton",
+     "autosave": false,
+     "private": true,
+     "project_description": "Test text"
+   
+   },
+   {
+    "project_name": "Test1",
+    "author_user": "Sergey",
+    "autosave": false,
+    "private": true,
+    "project_description": "Test text"
+   }
+]
