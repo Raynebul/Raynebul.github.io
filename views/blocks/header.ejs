@@ -8,7 +8,12 @@
       <div class="rightmenu">
       <a href="#">Язык</a>
       <a href="#">День/Ночь</a>
+      <% if(username === undefined)  { %>
       <a href="#openProfile">Профиль</a>
+      <% } else { %>
+      <a href="/user">Профиль</a>
+      <% } %>
+
       </div>
       </nav>
       </div>

@@ -21,11 +21,13 @@
 
       <div class="choicecourse">
         <span>all</span>
-        <span>1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>4</span>
-        <span>5</span>
+        <% for(var i=0; i < pages; i++) { %>
+          <% if(data.id === i+1) { %>   
+            <span id="currentId"><a href="/course/<%= courseid %>/<%= i+1 %>"><%= i+1 %></a></span>
+          <% } else { %>
+           <span> <a href="/course/<%= courseid %>/<%= i+1 %>"><%= i+1 %></a></span>
+            <% } %>
+          <% } %>
       </div>
       <div class="workpanel">
       <div class ="SQL-panel">
@@ -64,17 +66,26 @@
       </div>
       <div class="workpanel2">
          <div class = "elem3">
-          <span>1. 1. Введение в SQL</span>
+          <span><%= data.id %>. <%= data.taskName %></span>
+          
         </div>
         
     <div class="task">
       <div class = "taskpanel">
-        <span>Задание</span>           
-        </div>
+        <span>Задание</span>    
+      </div>
+      <div class="tasktext">
+        <% var newblock = data.taskDescription %>
+        <%- include("blocks/" + newblock) -%>
+       </div>    
     </div>
       <div class="answer">
             <div class="completed"><span>Задание выполнено!</span></div>
-            <button class="continue">Дальше</button>
+            <% if(data.id === pages) { %>
+            <a href="/course/<%= courseid %>" class="continue">Дальше</a>
+            <% } else { %>
+              <a href="/course/<%= courseid %>/<%= data.id+1 %>" class="continue">Дальше</a>
+            <% } %>
           </div>
  </div>
              </main>

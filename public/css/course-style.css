@@ -527,3 +527,15 @@ position: relative;
   background-color: #fff;
   color: #7c898a;
 }
+
+.tasktext {
+  padding: 10px;
+  overflow: scroll;
+  font-size: 15px;
+  height: 90%;
+  width: 100%;
+}
+
+#currentId {
+  background-color: rgb(81, 77, 86);
+}

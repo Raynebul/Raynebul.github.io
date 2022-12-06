@@ -1,17 +1,50 @@
-[
+{
+  "projects":
+  [
    {
-     "project_name": "Test",
-     "author_user": "Anton",
+    "id": 1,
+     "projectname": "Проект Антона для учёбы",
+     "authoruser": "Anton",
      "autosave": false,
      "private": true,
-     "project_description": "Test text"
+     "project_description": "Здесь хранится дефолтное описание проекта"
    
    },
    {
-    "project_name": "Test1",
-    "author_user": "Sergey",
+    "id": 2,
+    "projectname": "Проект Сергей для работы",
+    "authoruser": "Sergey",
     "autosave": false,
     "private": true,
     "project_description": "Test text"
    }
-]
+],
+  "courses":
+  [
+    {
+      "id": 1,
+      "coursename": "Основы SQL",
+      "courseauthor": "Anton",
+      "coursedescription": "text course",
+      "text":"(англ. Houston) — четвёртый по количеству жителей город в Соединённых Штатах Америки ",
+      "pages":
+      [
+      {
+         "page": 1,
+         "page_task": "tasktext1",
+         "data_tables": "new"      
+      },
+      {
+        "page": 2,
+        "page_task": "task_text2",
+        "data_tables": "new"
+      },
+      {
+        "page": 3,
+        "page_task": "task_text3",
+        "data_tables": "new"
+      }
+      ]   
+    }
+  ]
+}

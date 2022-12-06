@@ -1,4 +1,4 @@
-<form action="/user" method="post">
+
 <div id="openProfile" class="modal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -12,6 +12,7 @@
           <h3 class="modal-title">Авторизация</h3>
         </div>
         <div class="modal-body">
+          <form action="/user" method="post">
           <input id="userLogin" type="text" placeholder="Введите логин или почту" name="username">
           <input id="userPassword" type="text" placeholder="Введите пароль" name="password">
           <div class="switchbox"><label class="switch" style="font-size: 0.7rem">
@@ -21,8 +22,12 @@
           <span id="rememberme">Запомнить меня</span>
         </div>
           <div class="modal-options">
-            <button id="enter">Вход</button>
-            <button class="register">Регистрация</button>
+            
+              <button id="enter">Вход</button>
+            </form>
+            <form action="/register" method="get">
+              <button class="register">Регистрация</button>
+            </form>
             <button class="forget">Забыли пароль?</button>
           </div>
         </div>
@@ -31,4 +36,3 @@
       </div>
     </div>
   </div>
-</form>

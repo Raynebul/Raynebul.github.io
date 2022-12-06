@@ -1,5 +1,6 @@
 [
     {
+      "id": 1,
       "course_name": "Test",
       "course_author": "Anton",
       "course_description": "text course",
@@ -7,20 +8,20 @@
       "page":
       [
       {
-         "number_page": 1,
-         "page_task_page": "task_text",
+         "page": 1,
+         "page_task": "task_text",
          "data_tables": "new",
          "completed": false
         
       },
       {
-        "number_page": 2,
+        "page": 2,
         "page_task_page": "task_text2",
         "data_tables": "new",
         "completed": false
       },
       {
-        "number_page": 3,
+        "page": 3,
         "page_task_page": "task_text4",
         "data_tables": "new",
         "completed": false

@@ -1,0 +1,310 @@
+* {
+	box-sizing: border-box;
+}
+  
+.wrapper {
+ background-color: #B6BEC0;
+  margin: -10px;
+  width: 100%
+}
+
+header, .panel {
+  background-color: #3A4350;
+}
+
+.sqlsquare1, .sqlsquare2, #run, .clear1, .button {
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+}
+
+
+.panel, .answer, .task, .script, .query, .clear1, .sqlsquare1, .sqlsquare2, .output {
+  background-color: #EDF3F4;
+}
+
+header {
+  top: 0;
+	left: 0;
+  margin: 0;
+  padding: 0; 
+  width: 100%;
+  height: 40px;
+  font-size: 25px;
+  color: white;
+}
+
+
+nav {
+  display: flex;
+}
+
+nav a {
+	padding: 10px;
+  height: 40px;
+	color: white;
+	text-decoration: none;
+	font: 20px Arial;
+}
+nav a:hover, nav a.active {
+	background-color: #2D2F38;
+}
+
+.leftmenu {
+  height: 40px;
+  display: flex;
+  align-items: center; /* align vertical */
+}
+
+.rightmenu {
+  margin-left: auto;
+  height: 40px;
+  display: flex;
+  align-items: center; /* align vertical */
+}
+
+
+.modal {
+    position: fixed; /* фиксированное положение */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5); /* цвет фона */
+    opacity: 0; /* по умолчанию модальное окно прозрачно */
+    pointer-events: none; /* элемент невидим для событий мыши */
+    margin: 0;
+    padding: 0;
+    transition: opacity 200ms ease-in; /* анимация перехода */
+  }
+  /* при отображении модального окно */
+  .modal:target {
+    opacity: 1; /* делаем окно видимым */
+    pointer-events: auto; /* элемент видим для событий мыши */
+    overflow-y: auto; /* добавляем прокрутку по y, когда элемент не помещается на страницу */
+  }
+  /* ширина модального окна и его отступы от экрана */
+  .modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 10px;
+    margin-left: auto;
+  }
+  @media (min-width: 576px) {
+  .modal-dialog {
+      max-width: 500px;
+      margin: 150px auto; /* для отображения модального окна по центру */
+      
+  }
+  }
+  /* свойства для блока, содержащего контент модального окна */ 
+  .modal-content {
+    position: relative;
+    display: flex;
+   /*  */
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-top-right-radius: 1.0rem;
+    border-bottom-right-radius: 1.0rem;
+    border-top-left-radius: 1.1rem;
+    border-bottom-left-radius: 1.1rem;
+    outline: 0;
+    height: 400px;
+    width: 700px;
+  }
+  @media (min-width: 768px) {
+  .modal-content {
+      box-shadow: 0 5px 15px rgba(0,0,0,.5);
+  }
+  
+  .leftblocklogin {
+    width: 20%;
+    height: 400px;
+    background-color: #3A4350;
+    border-top-left-radius: 1.0rem;
+    border-bottom-left-radius: 1.0rem;
+  }
+  
+  .rightblocklogin {
+    /*flex-direction: column; */
+    margin-left: 40px;
+    height: 400px;
+  }
+  
+  .blocksettings {
+    margin-left: 40px;
+    width: 100%;
+    height: 400px;
+  }
+  
+  }
+  /* свойства для заголовка модального окна */
+  .modal-header {
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #eceeef;
+    color: #7c898a;
+  }
+  .modal-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+    justify-content: center; /* align horizontal */
+  }
+  /* свойства для кнопки "Закрыть" */
+  .close {
+    float: right;
+    font-family: sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+    text-decoration: none;
+    padding-right: 10px;
+    padding-top: 10px;
+  }
+  /* свойства для кнопки "Закрыть" при нахождении её в фокусе или наведении */
+  .close:focus, .close:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: .75;
+  }
+  
+  
+  .login {
+   padding-top: 60px;
+  }
+  /* свойства для блока, содержащего основное содержимое окна */
+  .modal-body {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 15px;
+    overflow: auto; 
+  }
+  
+  .modal-body input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 350px;
+    height: 35px;
+    border-radius: 5px;
+    border-color:#808C9D;
+    background-color:#B6BEC0;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 3.75em;
+    height: 2.125em;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* Rounded sliders */
+  .slider-round {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 2.125em;
+  }
+  
+  .slider-round:before {
+    position: absolute;
+    content: "";
+    height: 1.625em;
+    width: 1.625em;
+    left: 0.25em;
+    bottom: 0.25em;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  .switchbox {
+    display: flex;
+  }
+  
+  #rememberme {
+    display: flex;
+   /* justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+    padding-left: 10px;
+    font-size: 15px;
+    color: #7c898a;
+  }
+  
+  .switch input:checked + .slider-round {
+    background-color: #2196F3;
+  }
+  
+  .switch input:focus + .slider-round {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  .switch input:checked + .slider-round:before {
+    -webkit-transform: translateX(1.625em);
+    -ms-transform: translateX(1.625em);
+    transform: translateX(1.625em);
+  }
+  
+  .modal-options {
+    display: flex;
+  }
+  
+  /* вход регистрация забыли пароль? */
+  .modal-options button {
+    margin-top: 10px;
+    margin-right: 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+  
+  }
+  
+  #enter {
+    background-color: #2196F3;
+    color: #EDF3F4;
+    width: 70px;
+    height: 30px;
+    border-radius: 10%;
+  }
+  
+  .forget, .register {
+    background-color: #fff;
+    color: #7c898a;
+  }
+
+  footer {
+    height: 40px;
+    padding: 5px 0;
+      color: white;
+    font: 20px Arial;
+      text-align: center;;
+    background-color: grey;
+  }
+
+  .maintitle {
+    text-align: center;
+    font: 40px Arial;
+    text-decoration: bold;
+  }
+  

@@ -286,4 +286,54 @@ position: relative;
   background-color: #fff;
   color: #7c898a;
 }
-  
+
+.usercard {
+  background-color: #c1d2d5;
+  width: 800px;
+  height:400px;
+  border-top-right-radius: 1.0rem;
+  border-bottom-right-radius: 1.0rem;
+  border-top-left-radius: 1.1rem;
+  border-bottom-left-radius: 1.1rem;
+  margin: 20px;
+
+}
+
+.top_usercard {
+  display: flex;
+  padding-top: 25px;
+  margin: 25px;
+}
+
+.username_and_mail {
+  margin-left: 20px;
+}
+
+.usernameuser {
+  font-size: 30px;
+  text-decoration: underline;
+  color: #759298;
+}
+
+.usermail {
+  font-size: 20px;
+  color: #95a3a4;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #EDF3F4;
+}
+
+
+
+#title_completed_courses {
+  font-size: 25px;
+  color: #759298;
+}
+
+#iconsetting {
+  margin-left: auto;
+}

@@ -5,10 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/user-style.css">
-    <title>Document</title>
+    <title>Страница пользователя</title>
 </head>
 <body>
         <script src="code-script.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+
+        
         <div class="wrapper">
             <%- include('blocks/header') -%>
           <main>
@@ -16,6 +19,31 @@
       <%- include('blocks/log-in') -%>
       <!--  свойства для блока, содержащего контент модального окна -->
     <h1>Страница пользователя: <%= username %></h1>
+    <div class="usercard">
+       <div class="top_usercard">
+          <div class="avatar"></div>
+          <div class="username_and_mail">
+             <div class="usernameuser"><%= username %></div>
+             <div class="usermail"><%= email %></div>
+          </div>
+          <img id="iconsetting" src="/img/free-settings-icon-3110-thumb.png" alt="альтернативный текст" height="100" width="100">
+        </div>
+        <div>
+            <div id="completedcourses">
+               <p>Пройденный курсы</p>
+            </div>
+            
+            <div id="createdprojects">
+                <table>
+                    <% for(var i=0; i < data.length; i++) { %>
+                       <tr>
+                         <td><a href="/sandbox/<%= data[i].id %>"><%= data[i].projectname %></a></td>
+                         <td><%= data[i].projectDescription %></td>
+                       </tr>
+                    <% } %>
+                    </table>
+        </div>
+    </div>
     </main>
     <%- include('blocks/footer') -%>
         </div>

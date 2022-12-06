@@ -1,6 +1,8 @@
 function alertWithMessage() {
     alert("Проверка работы");
   }
+
+
   
 function eraseTheText(string) {
     //alert("Очистить");
@@ -11,6 +13,13 @@ function eraseTheText(string) {
   alert("Выполнение кода");
 
  } 
+
+// async function deleteId() {
+//   alert("Выполнение кода");
+//   const res = await fetch(`/sandbox/${id}`, {
+//     method: 'DELETE',
+//   });
+//  } 
 
 
  window.onload = function() {
@@ -50,5 +59,20 @@ function eraseTheText(string) {
 
 
  }
+
+ async function EditProject(ProjectId) {
+  const response = await fetch("sandbox/:id", {
+      method: "PUT",
+     // headers: { "Accept": "application/json", "Content-Type": "application/json" },
+      body: JSON.stringify({
+          id: ProjectId
+      })
+  });
+  if (response.ok === true) {
+      const user = await response.json();
+      reset();
+      document.querySelector("tr[data-rowid='" + user.id + "']").replaceWith(row(user));
+  }
+}
 
 

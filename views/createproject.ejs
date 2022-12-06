@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<form action="/sandbox" method="post">
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/mainpage-style.css">
+  <title>Редактор кода</title>
+</head>
+<body> 
+  <script src="/js/code-script.js"></script>
+  <div class="wrapper">
+ <%- include('blocks/header') -%>
+    <main>
+
+      <!-- свойства для блока, содержащего контент модального окна -->
+      <%- include('blocks/log-in') -%>
+      <!--  свойства для блока, содержащего контент модального окна -->
+      <p class="maintitle">Онлайн тренажер с упражнениями и курсами по SQL</p>
+
+         <input type="text" id="userProjectname" name="projectname">
+         <button>Создать новый проект хыхы</button>
+      
+    </main>
+
+    <%- include('blocks/footer') -%>
+   </div>
+ </body> 
+ </html>   
+</form>  
