@@ -6,6 +6,7 @@ const path = require('path')
 const fs = require('fs')
 const methodOverride = require("method-override")
 var db1 = require("./database_projects.js")
+const { text } = require('express')
 
 //var db2 = require("./database_courses.js")
 
@@ -159,6 +160,28 @@ db1.get(sql, params, (err, row) => {
   }
    pages=row.pageNumbers
 });
+var error;
+sql="select * from humans"
+var sqlquery=""
+params = [req.params.page]
+var taskdatabase;
+db1.all(sql, [], (err, row) => {
+  if (err) {
+    res.status(400).json({"error":err.message});
+    return;
+  }
+  else{
+   taskdatabase=row;
+  }
+});
+var select = {
+  "id": 1,
+  "sex": 1,
+  "name": 1,
+  "surname": 1,
+  "age": 1
+}
+ var rightdatabase;
  sql = "select * from course_id_" + req.params.id + " where id = ?"
  params = [req.params.page]
   db1.get(sql, params, (err, row) => {
@@ -166,15 +189,124 @@ db1.get(sql, params, (err, row) => {
         res.status(400).json({"error":err.message});
         return;
       }
+      db1.all(row.rightsqlquery, [], (err, row1) => {
+        if (err) {
+          res.status(400).json({"error":err.message});
+          return;
+        }
+        rightdatabase=row1;
+      });
        res.render('course', {
            "data":row,
            "courseid": req.params.id,
            "pages": pages,
-           "username": req.session.username
+           "username": req.session.username,
+           "taskdatabase": taskdatabase,
+           "select": select,
+           "sqlquery1": sqlquery,
+           "rightdatabase": rightdatabase,
+           "error": undefined
        })
     });
 })
 
+app.post('/course/:id/:page', (req, res, next) => {
+  //var sql2 = "select * from courses where id = ?"
+  var sql2=req.body.codetext;
+  console.log(sql2)
+
+var sql ="select * from courses where id = ?"
+var params = [req.params.id]
+var pages;
+db1.get(sql, params, (err, row) => {
+  if (err) {
+    res.status(400).json({"error":err.message});
+    return;
+  }
+   pages=row.pageNumbers
+});
+//sql="select * from humans"
+var select = {
+  "id": undefined,
+  "sex": undefined,
+  "name": undefined,
+  "surname": undefined,
+  "age": undefined
+}
+params = [req.params.page]
+var error = undefined;
+var taskdatabase;
+db1.all(sql2, [], (err, row) => {
+  if (err) {
+    //res.status(400).json({"error":err.message});
+    error = err.message;
+    //return;
+  }
+  else
+  {
+   taskdatabase=row
+   row.forEach((rows) => {
+    if(rows.id != undefined)
+    {
+      select.id=1;
+      console.log(rows.id)
+    }
+    if(rows.sex != undefined)
+    {
+      select.sex=1;
+      console.log(rows.sex)
+    }
+    if(rows.name != undefined)
+    {
+      select.name=1;
+      console.log(rows.name)
+    }
+    if(rows.surname != undefined)
+    {
+      select.surname=1;
+      console.log(rows.surname)
+    }
+    if(rows.age != undefined)
+    {
+      select.age=1;
+      console.log(rows.age)
+    }
+    
+  });
+}
+});
+
+
+ sql = "select * from course_id_" + req.params.id + " where id = ?"
+ params = [req.params.page]
+ var rightdatabase;
+  db1.get(sql, params, (err, row) => {
+      if (err) {
+        res.status(400).json({"error":err.message});
+        return;
+      }
+      db1.all(row.rightsqlquery, [], (err, row1) => {
+        if (err) {
+          res.status(400).json({"error":err.message});
+          return;
+        }
+      //  rightdatabase=row1;
+       // rightdatabase.age
+        console.log(row.rightsqlquery)
+      });
+       res.render('course', {
+           "data":row,
+           "courseid": req.params.id,
+           "pages": pages,
+           "username": req.session.username,
+           "taskdatabase": taskdatabase,
+           "select": select,
+           "sqlquery1": sql2,
+           "rightdatabase": rightdatabase,
+           "error": error
+       })
+    });
+})
 
 app.put('/course/:name/:page', (req, res) => {
   //при выполнении задания и его проверки, параметр pag_completed 

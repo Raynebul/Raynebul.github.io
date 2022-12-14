@@ -50,18 +50,19 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
         db.run(`CREATE TABLE course_id_1 (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             taskName text,
-            taskDescription text
+            taskDescription text,
+            rightsqlquery text
             )`, (err) => {
             if (err) {
                 // Table already created
                 console.log("no Created table courses")
             }else{
                 // Table just created, creating some rows
-                var insert = 'INSERT INTO course_id_1 (taskName, taskDescription) VALUES (?,?)'
-                db.run(insert, ["Введение в запросы", "course_id_1_1"])
-                db.run(insert, ["Основы запросов", "course_id_1_1"])
-                db.run(insert, ["Select", "course_id_1_1"])
-                db.run(insert, ["Where", "course_id_1_1"])
+                var insert = 'INSERT INTO course_id_1 (taskName, taskDescription, rightsqlquery) VALUES (?,?,?)'
+                db.run(insert, ["Введение в запросы", "course_id_1_4", "select * from humans"])
+                db.run(insert, ["Основы запросов", "course_id_1_2", "select name from humans"])
+                db.run(insert, ["Select", "course_id_1_1", "select * from humans where age = 19"])
+                db.run(insert, ["Where", "course_id_1_3", "select name from humans where age = 19"])
                 console.log("Created projects table")
             }
         }); 
@@ -69,17 +70,18 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
         db.run(`CREATE TABLE course_id_2 (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             taskName text,
-            taskDescription text
+            taskDescription text,
+            rightsqlquery text
             )`, (err) => {
             if (err) {
                 // Table already created
                 console.log("no Created table courses")
             }else{
                 // Table just created, creating some rows
-                var insert = 'INSERT INTO course_id_2 (taskName, taskDescription) VALUES (?,?)'
-                db.run(insert, ["Введение в создание таблицы", "course_id_1_1"])
-                db.run(insert, ["Основы создание таблицы", "course_id_1_1"])
-                db.run(insert, ["CREATE TABLE", "course_id_1_1"])
+                var insert = 'INSERT INTO course_id_2 (taskName, taskDescription, rightsqlquery) VALUES (?,?,?)'
+                db.run(insert, ["Введение в создание таблицы", "course_id_1_1", " "])
+                db.run(insert, ["Основы создание таблицы", "course_id_1_1", " "])
+                db.run(insert, ["CREATE TABLE", "course_id_1_1", " "])
                 console.log("Created projects table")
             }
         }); 
@@ -101,7 +103,28 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
                 db.run(insert, ["Sasha", "alexandra@mail.ru", "JweM22_eE4"])
                 console.log("Created users table")
             }
-        });    
+        });  
+        db.run(`CREATE TABLE humans (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            sex text,
+            name text,
+            surname text, 
+            age text
+            )`, (err) => {
+            if (err) {
+                // Table already created
+                console.log("no Created table courses")
+            }else{
+                // Table just created, creating some rows
+                var insert = 'INSERT INTO humans (sex, name, surname, age) VALUES (?,?,?,?)'
+                db.run(insert, ["M", "Anton", "Puchkov", "19"])
+                db.run(insert, ["F", "Alexandra", "Zlatova", "20"])
+                db.run(insert, ["F", "Maria", "Alfimenko", "19"])
+                db.run(insert, ["M", "Vladimir", "Vasenin", "20"])
+                db.run(insert, ["F", "Elena", "Lemeshko", "19"])
+                console.log("Created users table")
+            }
+        });      
     }
 });
 

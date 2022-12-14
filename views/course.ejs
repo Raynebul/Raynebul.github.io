@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/header_and_footer.css">
   <link rel="stylesheet" href="/css/course-style.css">
   <title>Тренажёр</title>
 </head>
@@ -30,6 +31,7 @@
           <% } %>
       </div>
       <div class="workpanel">
+<form method="POST" action="/course/<%= courseid %>/<%= data.id %>">
       <div class ="SQL-panel">
    <div class="elem1">
    <div class="sqlsquare1">
@@ -40,7 +42,9 @@
    </div>
      <div class="elem2">
      <button class ="clear" onclick="eraseTheText('outputSQLScript')">Очистить</button>
-     <button id="run" onclick="runCode()">Выполнить</button>
+     <!-- <form method="POST" action="/course/<%= courseid %>/<%= data.id %>"> -->
+     <button id="run" type="submit">Выполнить</button>
+    <!-- </form> -->
      </div>
      </div>
 
@@ -48,10 +52,14 @@
       <div class="SQL-container">
         
  <div class="script">
-    <textarea id="outputSQLScript">
+  
+    <textarea id="outputSQLScript" name="codetext">
+
    </textarea>
+  
  </div>
  </div>
+</form>
       <div class= "bottompanel">
       <div class="output">
  <div class="panel"><nav>
@@ -60,7 +68,53 @@
      <a href="#">Messages</a>
      </nav>
      </div>
-   <p></p>
+     <% if(error != undefined) { %>
+      <p><b>ОШИБКА! Неправильно введен запрос</b></p>
+    <% } else { %>
+   <p><table border="1">
+    <caption><b>База данных Humans</b></caption>
+    <thead>
+    <tr>
+      <% if(select.id != undefined) { %>
+      <td><b>id</b></td>
+      <% } %>
+      <% if(select.sex != undefined) { %>
+      <td><b>sex</b></td>
+      <% } %>
+      <% if(select.name != undefined) { %>
+      <td><b>name</b></td>
+      <% } %>
+      <% if(select.surname != undefined) { %>
+      <td><b>surname</b></td>
+      <% } %>
+      <% if(select.age != undefined) { %>
+      <td><b>age</b></td>
+      <% } %>
+    </tr>
+    </thead>
+    <tbody>
+      <% for(var i=0; i < taskdatabase.length; i++) { %>
+    <tr>
+      <% if(select.id != undefined) { %>
+      <td><b><%= taskdatabase[i].id %></b></td>
+      <% } %>
+      <% if(select.sex != undefined) { %>
+      <td><b><%= taskdatabase[i].sex %></b></td>
+      <% } %>
+      <% if(select.name != undefined) { %>
+      <td><b><%= taskdatabase[i].name %></b></td>
+      <% } %>
+      <% if(select.surname != undefined) { %>
+      <td><b><%= taskdatabase[i].surname %></b></td>
+      <% } %>
+      <% if(select.age != undefined) { %>
+      <td><b><%= taskdatabase[i].age %></b></td> 
+      <% } %>
+    </tr>
+    <% } %>
+    </tbody>
+    </table></p>
+    <% } %>
  </div>
         </div>
       </div>
@@ -80,12 +134,14 @@
        </div>    
     </div>
       <div class="answer">
+<% if(rightdatabse === taskdatabase)  { %>
             <div class="completed"><span>Задание выполнено!</span></div>
             <% if(data.id === pages) { %>
             <a href="/course/<%= courseid %>" class="continue">Дальше</a>
             <% } else { %>
               <a href="/course/<%= courseid %>/<%= data.id+1 %>" class="continue">Дальше</a>
             <% } %>
+ <% } %>
           </div>
  </div>
              </main>

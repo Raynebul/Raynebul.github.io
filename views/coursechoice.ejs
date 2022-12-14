@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/mainpage-style.css">
+  <link rel="stylesheet" href="/css/header_and_footer.css">
+  <link rel="stylesheet" href="/css/coursechoice-style.css">
   <title>Редактор кода</title>
 </head>
 <body> 
@@ -32,14 +33,14 @@ $(function() {
       <!--  свойства для блока, содержащего контент модального окна -->
       <h2>Все курсы</h2>
       <div id="coursedata">
-        <table>
           <% for(var i=0; i < data.length; i++) { %>
-             <tr>
-               <td><a href="/course/<%= data[i].id %>"><%= data[i].coursename %></td>
-               <td><%= data[i].courseDescription %></td>
-             </tr>
+            <a class= "courselink" href="/course/<%= data[i].id %>">
+             <div class="courseblock">         
+               <p class="coursename"><%= data[i].coursename %></p>
+               <p class="coursedescription"><%= data[i].courseDescription %></p>        
+              </div>
+            </a>
           <% } %>
-          </table>
       </div>
     </main>
 
