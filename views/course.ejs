@@ -134,14 +134,12 @@
        </div>    
     </div>
       <div class="answer">
-<% if(rightdatabse === taskdatabase)  { %>
             <div class="completed"><span>Задание выполнено!</span></div>
             <% if(data.id === pages) { %>
             <a href="/course/<%= courseid %>" class="continue">Дальше</a>
             <% } else { %>
               <a href="/course/<%= courseid %>/<%= data.id+1 %>" class="continue">Дальше</a>
             <% } %>
- <% } %>
           </div>
  </div>
              </main>
