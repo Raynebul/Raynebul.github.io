@@ -17,14 +17,31 @@
       <!-- свойства для блока, содержащего контент модального окна -->
       <%- include('blocks/log-in') -%>
       <!--  свойства для блока, содержащего контент модального окна -->
-      <p class="maintitle">Онлайн тренажер с упражнениями и курсами по SQL</p>
-      <p>Освой SQL - научись создавать собственные базы данных и составлять запросы к ним</p>
-      <p>Курсы по SQL</p>
+      <div class="maintitle"><div class="name_of">Онлайн тренажер с упражнениями и курсами по SQL</div>
+        <div class="description_of">Освой SQL - научись создавать собственные базы данных и составлять запросы к ним</div></div>
+      
+      
+      <div class="info_on_page">
+     
+      <div class="info_add">
+      
+      <div class="part1 part4"><p>Курсы по SQL</p></div>
+      <div class="part2 part3">
       <p>Текст с описание курса по SQL</p>
       <a href="/course">Перейти к курс</a>
+      </div>
+      </div>
+      <div class="info_add">
+      <div class="part2 part4"><p>Текст с описание онлайн-тренажёра по SQL</p>
+        <a href="/sandbox">Перейти к редактор кода</a>
+      </div>
+      <div class="part1 part3" >
       <p>Онлайн-тренажер на основе SQL</p>
-      <p>Текст с описание онлайн-тренажёра по SQL</p>
-      <a href="/sandbox">Перейти к редактор кода</a>
+
+      </div>
+      </div>
+
+    </div>
     </main>
 
     <%- include('blocks/footer') -%>

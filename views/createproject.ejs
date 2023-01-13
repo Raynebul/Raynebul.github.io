@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<form action="/sandbox" method="post">
+
 <html lang="ru">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/header_and_footer.css">
-  <link rel="stylesheet" href="/css/mainpage-style.css">
+  <link rel="stylesheet" href="/css/createproject-style.css">
   <title>Редактор кода</title>
 </head>
 <body> 
@@ -18,15 +18,56 @@
       <!-- свойства для блока, содержащего контент модального окна -->
       <%- include('blocks/log-in') -%>
       <!--  свойства для блока, содержащего контент модального окна -->
-      <p class="maintitle">Онлайн тренажер с упражнениями и курсами по SQL</p>
-
-         <input type="text" id="userProjectname" name="projectname">
-         <button>Создать новый проект</button>
+      <div class="createprojectpage">
       
+
+      <div id="projectdata">
+      <% if(username != undefined) { %>
+      <p>Выберите готовые проекты, созданные вами: </p>
+        <% for(var i=0; i < data.length; i++) { %>
+          <a class= "projectlink" href="/sandbox/<%= data[i].id %>">
+           <div class="projectblock">        
+             <div class="projectbox">
+             <p class="projectname"><%= data[i].projectname %></p>
+             <p class="projectdate">12.01.2023</p>      
+            </div>  
+            </div>
+          </a>
+        <% } %>
+        <% } else { %>
+          <p>Войдите, чтобы увидеть все созданные вами проекты </p>
+          <% } %>
+    </div>
+
+    <% if(username != undefined) { %>
+      <p>Или создайте новый проект:</p>
+      <form action="/sandbox" method="post">
+         <input type="text" id="userProjectname" name="projectname">
+         <p>Описание проекта - </p>
+         <input id="description" type="text" placeholder="Введите текст" name="projectDescription"></input>
+         <p id="autosave">Автосохранения</p>
+         <div class="switchbox"><label class="switch" style="font-size: 0.7rem">
+           <input type="checkbox" name="autosave" id="autosave" checked>
+           <span class="slider-round"></span>
+         </label>
+         </div>
+         <p id="private">Приватный</p>
+         <div class="switchbox"><label class="switch" style="font-size: 0.7rem">
+         <input type="checkbox" name="private" id="private">
+         <span class="slider-round"></span>
+         </label>
+         </div>
+         <button class="create_a_project_button">Создать новый проект</button>
+        </form>
+         <% } else { %>
+         <a href="#openProfile" class="create_a_project_button">Войти</a>
+          <% } %>
+
+
+        </div>
     </main>
 
     <%- include('blocks/footer') -%>
    </div>
  </body> 
  </html>   
-</form>  

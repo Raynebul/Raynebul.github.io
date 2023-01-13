@@ -36,27 +36,35 @@
               </div>
               <!-- <form action="/sandbox/<%= data.id %>" method="post"> -->
               <!-- <input type="hidden" name="_method" value="PUT"> -->
-              <input id="description" type="text" placeholder="Введите текст" name="projectDescription" form="update"></input>
+              <form id="myform" action="/sandbox/<%= data.id %>" method="post">        
+              <textarea id="description" type="text" placeholder="Введите текст" name="projectDescription" ><%= data.projectDescription %></textarea>
               <p id="autosave">Автосохранения</p>
               <div class="switchbox"><label class="switch" style="font-size: 0.7rem">
-                <input type="checkbox" name="autosave" id="autosave" checked form="update">
+                <% if(data.autosave=="true") { %>
+                <input type="checkbox" name="autosave" id="autosave" checked>
+                <% } else { %>
+                  <input type="checkbox" name="autosave" id="autosave">
+                  <% } %>
                 <span class="slider-round"></span>
               </label>
               </div>
               <p id="private">Приватный</p>
               <div class="switchbox"><label class="switch" style="font-size: 0.7rem">
-              <input type="checkbox" name="private" id="private" form="update">
+              <% if(data.private=="true") { %>
+              <input type="checkbox" name="private" id="private" checked>
+              <% } else { %>
+                <input type="checkbox" name="private" id="private">
+                <% } %>
               <span class="slider-round"></span>
               </label>
               </div>
-              <!-- </form> -->
+            </form> 
               <!-- PUT -->
-              <button type="submit">Обновить</button> 
-              <!-- </form> -->
-              <!-- Delete button -->
-               <p><form method="POST"  action="/sandbox/<%= data.id %>/delete"> 
+               <p>
+                <form method="POST"  action="/sandbox/<%= data.id %>/delete"> 
                  <button type="submit">Delete</button>
-               </form></p> 
+                 </form>
+               </p> 
               </div>
             </div>
           </div>
@@ -71,10 +79,9 @@
        <span id="Username">от: <%= data.author %></span>
        </div>
        <div class="buttons">
-         <button class="run1" onclick="runCode()"><div id="run">Выполнить</div></button>
-         <form action="/sandbox/<%= data.id %>" method="post" name="update">       
-            <button class="button1" type="submit"><div class="button">Сохранить</div></button>
-         </form>
+        <button class="run1" onclick="runCode()"><div id="run">Выполнить</div></button>  
+        <button form="myform" class="button1" type="submit"><div class="button">Сохранить</div></button>
+
          <button class="button1" onclick="location.href='#openSettings'"><div class="button">Настройки</div></button>
        </div>
      </div>
@@ -89,7 +96,7 @@
          </div>
  
      <div class="script">
-       <textarea id='outputSQLScript'>
+       <textarea form="myform" id='outputSQLScript' name="script">
        </textarea>
        <!-- <table border="1" width="370">
         <caption><b>Перепись населения</b></caption>
@@ -119,7 +126,7 @@
              <button class = "clear1" onclick="eraseTheText('outputSQLquery')"><div class ="clear"><p>Очистить</p></div></button>
        </div>
                <aside class="query">
-         <textarea id='outputSQLquery'>
+         <textarea form="myform" id='outputSQLquery'>
        </textarea>
        </aside>
          </div>

@@ -31,17 +31,22 @@ $(function() {
       <!-- свойства для блока, содержащего контент модального окна -->
       <%- include('blocks/log-in') -%>
       <!--  свойства для блока, содержащего контент модального окна -->
+<div id="courselist">
       <h2>Все курсы</h2>
       <div id="coursedata">
           <% for(var i=0; i < data.length; i++) { %>
             <a class= "courselink" href="/course/<%= data[i].id %>">
-             <div class="courseblock">         
+             <div class="courseblock">       
+              <div class="courseimage"></div> 
+               <div class="coursebox">
                <p class="coursename"><%= data[i].coursename %></p>
-               <p class="coursedescription"><%= data[i].courseDescription %></p>        
+               <p class="coursedescription"><%= data[i].courseDescription %></p>      
+              </div>  
               </div>
             </a>
           <% } %>
       </div>
+    </div>
     </main>
 
     <%- include('blocks/footer') -%>

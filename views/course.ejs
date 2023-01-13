@@ -31,7 +31,7 @@
           <% } %>
       </div>
       <div class="workpanel">
-<form method="POST" action="/course/<%= courseid %>/<%= data.id %>">
+
       <div class ="SQL-panel">
    <div class="elem1">
    <div class="sqlsquare1">
@@ -41,9 +41,9 @@
      <p>SQL Query</p>
    </div>
      <div class="elem2">
-     <button class ="clear" onclick="eraseTheText('outputSQLScript')">Очистить</button>
+     <button  class ="clear" onclick="eraseTheText('outputSQLScript')">Очистить</button>
      <!-- <form method="POST" action="/course/<%= courseid %>/<%= data.id %>"> -->
-     <button id="run" type="submit">Выполнить</button>
+     <button form="courseform" id="run" type="submit">Выполнить</button>
     <!-- </form> -->
      </div>
      </div>
@@ -52,14 +52,14 @@
       <div class="SQL-container">
         
  <div class="script">
-  
+  <form id="courseform" method="POST" action="/course/<%= courseid %>/<%= data.id %>">  
     <textarea id="outputSQLScript" name="codetext">
 
    </textarea>
-  
+  </form>
  </div>
  </div>
-</form>
+
       <div class= "bottompanel">
       <div class="output">
  <div class="panel"><nav>

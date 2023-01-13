@@ -15,8 +15,8 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
             author text,
             projectname text, 
             projectDescription text, 
-            autosave integer,
-            private integer 
+            autosave text,
+            private text 
             )`, (err) => {
             if (err) {
                 // Table already created
@@ -24,9 +24,9 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
             }else{
                 // Table just created, creating some rows
                 var insert = 'INSERT INTO projects (author, projectname, projectDescription, autosave, private) VALUES (?,?,?,?,?)'
-                db.run(insert, ["Anton","FirstProject", "Some text", 0, 0])
-                db.run(insert, ["Sergey","SecondProject","Some text", 0, 0])
-                db.run(insert, ["Anton","ThirdProject", "Some text", 0, 0])
+                db.run(insert, ["Anton","FirstProject", "Some text", "false", "false"])
+                db.run(insert, ["Sergey","SecondProject","Some text", "false", "false"])
+                db.run(insert, ["Anton","ThirdProject", "Some text", "false", "false"])
                 console.log("Created projects table")
             }
         });
@@ -79,9 +79,9 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
             }else{
                 // Table just created, creating some rows
                 var insert = 'INSERT INTO course_id_2 (taskName, taskDescription, rightsqlquery) VALUES (?,?,?)'
-                db.run(insert, ["Введение в создание таблицы", "course_id_1_1", " "])
-                db.run(insert, ["Основы создание таблицы", "course_id_1_1", " "])
-                db.run(insert, ["CREATE TABLE", "course_id_1_1", " "])
+                db.run(insert, ["Введение в создание таблицы", "course_id_2_1", "select * from humans"])
+                db.run(insert, ["Основы создание таблицы", "course_id_2_2", "select * from humans"])
+                db.run(insert, ["CREATE TABLE", "course_id_2_3", "select * from humans"])
                 console.log("Created projects table")
             }
         }); 

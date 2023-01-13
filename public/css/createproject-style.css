@@ -1,0 +1,65 @@
+.create_a_project_button {
+    border: none;
+   /* width: 100px;
+    height: 40px; */
+   padding: 10px;
+    background-color: rgb(16, 114, 219);
+    color: white;
+    margin-top: 15px;
+    text-decoration: none;
+}
+
+.createprojectpage {
+    padding-top: 25px;
+    padding-left: 25px;
+    padding-bottom: 25px;
+}
+
+.name_of {
+    font: 40px Arial;
+    text-decoration: bold;
+  }
+  
+  .description_of {
+    font: 20px Arial;
+    text-decoration: bold;
+  }
+  
+  .projectblock {
+    height: 60px;
+    width: 600px;
+    background-color: rgb(243, 255, 255);
+    padding-left: 10px;
+   /* margin-left: 10px; */
+    margin-top: 10px;
+    display: flex; 
+  }
+  
+  .projectlink {
+    text-decoration: none;
+    color:black;
+  }
+  
+  .projectbox {
+    line-height: normal;
+    padding: 0;
+    padding-left: 0.4em;
+  }
+  
+  .projectname {
+   padding-top: 0.4em;
+  
+   font-size: 1.3em;
+   line-height: 0.9em; 
+   font-weight: bold;
+   margin: 0;
+   color: #95a3a4;
+  }
+  
+  
+  .projectdate {
+    font-size: 0.9em;
+    line-height: 0.9em;
+    margin: 0;
+    color: #95a3a4;
+  }

@@ -1,9 +1,13 @@
+
+
 .courseblock {
     height: 60px;
     width: 600px;
-    background-color: #fff;
-    padding-left: 15px;
-    margin-left: 10px;
+    background-color: rgb(243, 255, 255);
+    padding-left: 10px;
+   /* margin-left: 10px; */
+    margin-top: 10px;
+    display: flex; 
 }
 
 .courselink {
@@ -11,12 +15,37 @@
     color:black;
 }
 
-.coursename {
-   font-size: 1.4em;
-   line-height: 0.9em;
+.coursebox {
+    line-height: normal;
+    padding: 0;
+    padding-left: 0.4em;
 }
 
-.courseDescription {
+.coursename {
+   padding-top: 0.4em;
+
+   font-size: 1.3em;
+   line-height: 0.9em; 
+   font-weight: bold;
+   margin: 0;
+   color: #95a3a4;
+}
+
+.courseimage {
+    width: 40px;
+    height: 40px;
+    background-color: red;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+.coursedescription {
     font-size: 0.9em;
     line-height: 0.9em;
+    margin: 0;
+    color: #95a3a4;
+}
+#courselist {
+    margin: 20px;
 }

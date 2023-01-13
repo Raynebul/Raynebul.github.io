@@ -89,6 +89,15 @@ app.get('/', (req, res) => {
  //res.send({message: 'HERE WE GO!'});
 }) 
 
+app.post('/', (req, res) => {
+  console.log(req.headers['cookie'])
+  req.session.username = undefined;
+  req.session.password = undefined;
+  req.session.email = undefined;
+  res.render('mainpage', {"username": req.session.username})
+ //res.send({message: 'HERE WE GO!'});
+})
+
 //GET РЕАЛИЗОВАНО
 app.get('/course', (req, res) => {
     var sql = "select * from courses"
@@ -152,26 +161,27 @@ app.get('/course/:id/:page', (req, res) => {
 //  res.render('course', returnVals)
 var sql ="select * from courses where id = ?"
 var params = [req.params.id]
-var pages;
-db1.get(sql, params, (err, row) => {
+let pages
+db1.get(sql, params, (err, row3) => {
   if (err) {
     res.status(400).json({"error":err.message});
     return;
   }
-   pages=row.pageNumbers
-});
-var error;
+   pages=row3.pageNumbers
+   console.log(pages);
+   var error;
 sql="select * from humans"
 var sqlquery=""
+console.log(pages);
 params = [req.params.page]
 var taskdatabase;
-db1.all(sql, [], (err, row) => {
+db1.all(sql, [], (err, row2) => {
   if (err) {
     res.status(400).json({"error":err.message});
     return;
   }
   else{
-   taskdatabase=row;
+   taskdatabase=row2;
   }
 });
 var select = {
@@ -196,6 +206,17 @@ var select = {
         }
         rightdatabase=row1;
       });
+      console.log({
+        "data":row,
+        "courseid": req.params.id,
+        "pages": pages,
+        "username": req.session.username,
+        "taskdatabase": taskdatabase,
+        "select": select,
+        "sqlquery1": sqlquery,
+        "rightdatabase": rightdatabase,
+        "error": undefined
+    })
        res.render('course', {
            "data":row,
            "courseid": req.params.id,
@@ -208,6 +229,8 @@ var select = {
            "error": undefined
        })
     });
+});
+
 })
 
 app.post('/course/:id/:page', (req, res, next) => {
@@ -224,8 +247,7 @@ db1.get(sql, params, (err, row) => {
     return;
   }
    pages=row.pageNumbers
-});
-//sql="select * from humans"
+   //sql="select * from humans"
 var select = {
   "id": undefined,
   "sex": undefined,
@@ -293,6 +315,7 @@ db1.all(sql2, [], (err, row) => {
       //  rightdatabase=row1;
        // rightdatabase.age
         console.log(row.rightsqlquery)
+        console.log(pages)
       });
        res.render('course', {
            "data":row,
@@ -306,21 +329,32 @@ db1.all(sql2, [], (err, row) => {
            "error": error
        })
     });
+});
+
 })
 
-app.put('/course/:name/:page', (req, res) => {
-  //при выполнении задания и его проверки, параметр pag_completed 
-  //и/или course_comlpeted с false на true 
-})
 
 //GET РЕАЛИЗОВАНО
 app.get('/sandbox', (req, res) => {
-
-   console.log(req.headers['cookie'])
-  res.render('createproject', {"username": req.session.username})
+  var sql = "select * from projects"
+  console.log(req.headers['cookie'])
+  //res.render('coursechoice', db.courses)
+  db1.all(sql, [], (err, row) => {
+    if (err) {
+      res.status(400).json({"error":err.message});
+      return;
+    }
+    res.render('createproject', {
+        "data":row,
+        "username": req.session.username
+    })
+  });
+//   console.log(req.headers['cookie'])
+ // res.render('createproject', {"username": req.session.username})
 })
 
 app.get("/sandbox/:id", (req, res, next) => {
+  
   var sql = "select * from projects where id = ?"
   var params = [req.params.id]
   db1.get(sql, params, (err, row) => {
@@ -328,35 +362,76 @@ app.get("/sandbox/:id", (req, res, next) => {
         res.status(400).json({"error":err.message});
         return;
       }
+      if((row.author==req.session.username && row.private=="true") || row.private=="false")
+      {
       console.log("connect to code-editor")
       res.render('code-editor', {
           "data":row,
           "username": req.session.username
       })
-    });
-});
+    }
+    else{
+      res.render('error', {
+        "username": req.session.username
+    })
+    } });
+  })
 
+//обновление проекта
 app.post("/sandbox/:id", (req, res, next) => {
   console.log(req.body.projectDescription)
-  var sql = "UPDATE projects SET projectDescription = " + 
-  "? , autosave = " + 
-  "? , private = " +
-  "? WHERE id = ?"
-  //console.log(req.body.s.projectDescription);
-  //var params = [req.body.s]
-  // db1.run(sql, params, (err, row) => {
-  //     if (err) {
-  //       res.status(400).json({"error":err.message});
-  //       return;
-  //     }
-  //     console.log("row was updated!")
-  //   //  row.projectDescription = req.body.projectDescription
-  //   //  row.autosave = req.body.autosave
-  //   //  row.private = req.body.private
-  //     res.render('code-editor', {
-  //         "data":row
-  //     })
-  //   });
+  var sql = "select * from projects where id = ?"
+  sql="Update projects set autosave=?, private=?, projectDescription=? where id=?"
+  var private;
+  var autosave;
+  //console.log(req.body.autosave);
+  //if(req.body.private != undefined)
+ // {
+  if(req.body.autosave)
+  {
+    console.log("true");
+    autosave="true";
+  }
+  else
+  {
+    console.log("false");
+    autosave="false";
+  }
+  if(req.body.private)
+  {
+    console.log("true");
+    private="true";
+  }
+  else
+  {
+    console.log("false");
+    private="false";
+  }
+ var params = [autosave, private, req.body.projectDescription,  req.params.id]
+
+  db1.run(sql, params, (err) => {
+      if (err) {
+        res.status(400).json({"error":err.message});
+        return;
+      }
+      console.log("row was updated!")
+    });
+ // }
+ sql="select * from projects where id = ?";
+ params = [req.params.id];
+ db1.get(sql, params, (err, row) => {
+  if (err) {
+    res.status(400).json({"error":err.message});
+    return;
+  }
+//  row.projectDescription = req.body.projectDescription
+//  row.autosave = req.body.autosave
+//  row.private = req.body.private
+  res.render('code-editor', {
+    "data":row,
+    "username": req.session.username
+  })
+});
 });
 
 
@@ -386,6 +461,7 @@ app.post('/sandbox', urlencodedParser, (req, res) => {
    //  datacourse.courses.push() - здесь будет создаваться новый проект юзера
    //i++;
    console.log(req.body.projectname)
+   console.log(req.body.projectDescription)
   //  const createdProject = {
   //      id: i,
   //      projectname: req.body.projectname,
@@ -396,32 +472,83 @@ app.post('/sandbox', urlencodedParser, (req, res) => {
   //  }
   // db.projects.push(createdProject);
    //console.log(db)
-   db1.run('INSERT INTO projects (author, projectname, projectDescription, autosave, private) VALUES (?,?,?,?,?)', [req.session.username, req.body.projectname,  '', 0,0], (err) => {
+   var private;
+   var autosave;
+   //console.log(req.body.autosave);
+   //if(req.body.private != undefined)
+  // {
+   if(req.body.autosave)
+   {
+     console.log("true");
+     autosave="true";
+   }
+   else
+   {
+     console.log("false");
+     autosave="false";
+   }
+   if(req.body.private)
+   {
+     console.log("true");
+     private="true";
+   }
+   else
+   {
+     console.log("false");
+     private="false";
+   }
+
+   db1.run('INSERT INTO projects (author, projectname, projectDescription, autosave, private) VALUES (?,?,?,?,?)', [req.session.username, req.body.projectname,  req.body.projectDescription, autosave, private], (err) => {
     if(err) {
       return console.log(err.message); 
     }
     console.log('Row was added to the table: ${this.lastID}');
+    var sql = "select * from projects"
+    console.log(req.headers['cookie'])
+    //res.render('coursechoice', db.courses)
+    db1.all(sql, [], (err, row1) => {
+      if (err) {
+        res.status(400).json({"error":err.message});
+        return;
+      }
+      res.render('createproject', {
+          "data":row1,
+          "username": req.session.username
+      })
+    });
   })
-   res.render('createproject', {"username": req.session.username})
+
 })
 
 
 //DELETE
 app.post('/sandbox/:id/delete', (req, res) => {
+  var sql= "DELETE FROM projects WHERE id = ?;"
+  db1.run(sql, req.params.id, function(err) {
+    if(err) {
+      return console.log(err.message); 
+    }
+    console.log('Row was deleted to the table: ${this.lastID}');
+  })
+   sql = "select * from projects"
+  console.log(req.headers['cookie'])
+  //res.render('coursechoice', db.courses)
+  db1.all(sql, [], (err, row) => {
+    if (err) {
+      res.status(400).json({"error":err.message});
+      return;
+    }
+    res.render('createproject', {
+        "data":row,
+        "username": req.session.username
+    })
+  });
   // здесь будет удаляться проект, созданный юзером.
   //console.log(req.headers['cookie'])
   //Перед этим мы находим название и id проекта из json-файла dataprojects
-var sql= "DELETE FROM projects WHERE id = ?;"
-db1.run(sql, req.params.id, function(err) {
-  if(err) {
-    return console.log(err.message); 
-  }
-  console.log('Row was deleted to the table: ${this.lastID}');
-  res.render('createproject', {"username": req.session.username});
-})
 
- // res.sendStatus(404)  
- // console.log("YOU CAN DELETE an object on ", req.params.id)
+
+
 })
 
 
@@ -533,7 +660,7 @@ app.post('/user', urlencodedParser, function(req, res) {
     {
       console.log(user.username);
       console.log(user.username);
-      if(user.username == req.body.username && user.password == req.body.password)
+      if((user.username == req.body.username && user.password == req.body.password) || (user.email == req.body.username && user.password == req.body.password))
           {
             foundUser = user.username
             req.session.username = user.username
