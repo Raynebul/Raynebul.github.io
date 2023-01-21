@@ -106,7 +106,8 @@ main {
   font-size: 20px;
 }
 .sqlsquare2 {
-    background-color: #A3B1B4;
+ /*   background-color: #A3B1B4; */
+ background-color: #EDF3F4;
 }
 
 .elem2 {
@@ -260,4 +261,32 @@ main {
 
 #currentId {
   background-color: rgb(81, 77, 86);
+}
+
+.tasktextcourse {
+   color: rgb(81, 77, 86);
+   font: sans-serif;
+   font-size: 1.0em;
+}
+
+.tablinks {
+  background-color: #3A4350;
+	padding: 10px;
+  height: 40px;
+	color: white;
+	text-decoration: none;
+	font: 20px Arial;
+  border: none;
+}
+
+.tablinks:hover, .tablinks.active {
+	background-color: #2D2F38;
+}
+
+.panel {
+  overflow: hidden;
+}
+
+.tabcontent {
+  display: none; 
 }

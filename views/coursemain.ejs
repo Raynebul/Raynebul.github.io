@@ -1,54 +1,117 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/header_and_footer.css">
-  <link rel="stylesheet" href="/css/coursemain-style.css">
-  <title>Редактор кода</title>
-</head>
-<body> 
-  <script src="/js/code-script.js"></script>
-  <div class="wrapper">
- <%- include('blocks/header') -%>
-    <main>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/header_and_footer.css" />
+    <link rel="stylesheet" href="/css/coursemain-style.css" />
+    <title>Редактор кода</title>
+  </head>
+  <body>
+    <script src="/js/code-script.js"></script>
+    <div class="wrapper">
+      <%- include('blocks/header') -%>
+      <main>
+        <!-- свойства для блока, содержащего контент модального окна -->
+        <%- include('blocks/log-in') -%>
+        <!--  свойства для блока, содержащего контент модального окна -->
+        <div class="coursestatus">
+          <div class="courseflag">
+            <p class="coursenamestyle"><%= data.coursename %></p>
+            <p>Описание курса: <%= data.courseDescription %></p>
+            <p>Сколько страниц: 0 из <%= data.pageNumbers %></p>
+            <p>Сложность: Легкая</p>
+          </div>
+          <div class="course_bottom">
+            <div class="courseinfo">
+              <div class="coursesubname">О курсе:</div>
+              <div class="coursetext">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+                sollicitudin ultrices dictum. Nullam non diam vestibulum,
+                interdum nibh quis, sollicitudin sem. Vivamus sit amet sagittis
+                massa. Cras aliquet lacus at interdum blandit. Quisque quis
+                tellus nunc. Cras at nisi laoreet, suscipit nibh quis,
+                pellentesque diam. Pellentesque habitant morbi tristique
+                senectus et netus et malesuada fames ac turpis egestas. Etiam a
+                bibendum orci. Sed fermentum consequat mauris adipiscing
+                condimentum. Phasellus id convallis nunc. Nullam vel mollis
+                purus. Vestibulum ante ipsum primis in faucibus orci luctus et
+                ultrices posuere cubilia Curae; Cras nec neque vel risus
+                accumsan sollicitudin quis ut velit. Fusce et libero hendrerit,
+                accumsan enim non, dictum eros. Proin sem justo, porta id magna
+                quis, consequat scelerisque urna.
+              </div>
+              <div class="coursetext">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+                sollicitudin ultrices dictum. Nullam non diam vestibulum,
+                interdum nibh quis, sollicitudin sem. Vivamus sit amet sagittis
+                massa. Cras aliquet lacus at interdum blandit. Quisque quis
+                tellus nunc. Cras at nisi laoreet, suscipit nibh quis,
+                pellentesque diam. Pellentesque habitant morbi tristique
+                senectus et netus et malesuada fames ac turpis egestas. Etiam a
+                bibendum orci. Sed fermentum consequat mauris adipiscing
+                condimentum. Phasellus id convallis nunc. Nullam vel mollis
+                purus. Vestibulum ante ipsum primis in faucibus orci luctus et
+                ultrices posuere cubilia Curae; Cras nec neque vel risus
+                accumsan sollicitudin quis ut velit. Fusce et libero hendrerit,
+                accumsan enim non, dictum eros. Proin sem justo, porta id magna
+                quis, consequat scelerisque urna.
+              </div>
+              <div class="coursetext">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+                sollicitudin ultrices dictum. Nullam non diam vestibulum,
+                interdum nibh quis, sollicitudin sem. Vivamus sit amet sagittis
+                massa. Cras aliquet lacus at interdum blandit. Quisque quis
+                tellus nunc. Cras at nisi laoreet, suscipit nibh quis,
+                pellentesque diam. Pellentesque habitant morbi tristique
+                senectus et netus et malesuada fames ac turpis egestas. Etiam a
+                bibendum orci. Sed fermentum consequat mauris adipiscing
+                condimentum. Phasellus id convallis nunc. Nullam vel mollis
+                purus. Vestibulum ante ipsum primis in faucibus orci luctus et
+                ultrices posuere cubilia Curae; Cras nec neque vel risus
+                accumsan sollicitudin quis ut velit. Fusce et libero hendrerit,
+                accumsan enim non, dictum eros. Proin sem justo, porta id magna
+                quis, consequat scelerisque urna.
+              </div>
+              <div class="coursetext">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+                sollicitudin ultrices dictum. Nullam non diam vestibulum,
+                interdum nibh quis, sollicitudin sem. Vivamus sit amet sagittis
+                massa. Cras aliquet lacus at interdum blandit. Quisque quis
+                tellus nunc. Cras at nisi laoreet, suscipit nibh quis,
+                pellentesque diam. Pellentesque habitant morbi tristique
+                senectus et netus et malesuada fames ac turpis egestas. Etiam a
+                bibendum orci. Sed fermentum consequat mauris adipiscing
+                condimentum. Phasellus id convallis nunc. Nullam vel mollis
+                purus. Vestibulum ante ipsum primis in faucibus orci luctus et
+                ultrices posuere cubilia Curae; Cras nec neque vel risus
+                accumsan sollicitudin quis ut velit. Fusce et libero hendrerit,
+                accumsan enim non, dictum eros. Proin sem justo, porta id magna
+                quis, consequat scelerisque urna.
+              </div>
+              <div class="coursesubname">Включенные базы данных:</div>
+              <div class="coursetext">
+                <ul>
+                  <li>База данных с людьми</li>
+                  <li>Второй пункт</li>
+                  <li>Третий пункт</li>
+                </ul>
+              </div>
+            </div>
+            <div class="block_with_status_and_start">
+              <div><p>Статус: пройдено/не пройдено</p></div>
+              <div>
+                <a class="startcourse" href="/course/<%= data.id %>/1"
+                  ><p>Перейти к курсу</p></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
 
-      <!-- свойства для блока, содержащего контент модального окна -->
-      <%- include('blocks/log-in') -%>
-      <!--  свойства для блока, содержащего контент модального окна -->
-      <div class="coursestatus">
-      <div class="courseflag">
-         <p class="coursenamestyle"><%= data.coursename %></p>
-         <p>Описание курса: <%= data.courseDescription %></p>
-         <p>Сколько страниц: 0 из <%= data.pageNumbers %></p>
-         <p>Сложность: Легкая</p>
-       </div>
-    <div class="course_bottom">
-    <div class="courseinfo">
-      <div class="coursesubname">О курсе:</div>
-      <div class="coursetext">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sollicitudin ultrices dictum. Nullam non diam vestibulum, interdum nibh quis, sollicitudin sem. Vivamus sit amet sagittis massa. Cras aliquet lacus at interdum blandit. Quisque quis tellus nunc. Cras at nisi laoreet, suscipit nibh quis, pellentesque diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam a bibendum orci. Sed fermentum consequat mauris adipiscing condimentum. Phasellus id convallis nunc. Nullam vel mollis purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras nec neque vel risus accumsan sollicitudin quis ut velit. Fusce et libero hendrerit, accumsan enim non, dictum eros. Proin sem justo, porta id magna quis, consequat scelerisque urna.</div>
-      <div class="coursetext">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sollicitudin ultrices dictum. Nullam non diam vestibulum, interdum nibh quis, sollicitudin sem. Vivamus sit amet sagittis massa. Cras aliquet lacus at interdum blandit. Quisque quis tellus nunc. Cras at nisi laoreet, suscipit nibh quis, pellentesque diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam a bibendum orci. Sed fermentum consequat mauris adipiscing condimentum. Phasellus id convallis nunc. Nullam vel mollis purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras nec neque vel risus accumsan sollicitudin quis ut velit. Fusce et libero hendrerit, accumsan enim non, dictum eros. Proin sem justo, porta id magna quis, consequat scelerisque urna.</div>
-      <div class="coursetext">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sollicitudin ultrices dictum. Nullam non diam vestibulum, interdum nibh quis, sollicitudin sem. Vivamus sit amet sagittis massa. Cras aliquet lacus at interdum blandit. Quisque quis tellus nunc. Cras at nisi laoreet, suscipit nibh quis, pellentesque diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam a bibendum orci. Sed fermentum consequat mauris adipiscing condimentum. Phasellus id convallis nunc. Nullam vel mollis purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras nec neque vel risus accumsan sollicitudin quis ut velit. Fusce et libero hendrerit, accumsan enim non, dictum eros. Proin sem justo, porta id magna quis, consequat scelerisque urna.</div>
-      <div class="coursetext">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sollicitudin ultrices dictum. Nullam non diam vestibulum, interdum nibh quis, sollicitudin sem. Vivamus sit amet sagittis massa. Cras aliquet lacus at interdum blandit. Quisque quis tellus nunc. Cras at nisi laoreet, suscipit nibh quis, pellentesque diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam a bibendum orci. Sed fermentum consequat mauris adipiscing condimentum. Phasellus id convallis nunc. Nullam vel mollis purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras nec neque vel risus accumsan sollicitudin quis ut velit. Fusce et libero hendrerit, accumsan enim non, dictum eros. Proin sem justo, porta id magna quis, consequat scelerisque urna.</div>
-      <div class="coursesubname">Включенные базы данных:</div>
-      <div class="coursetext">
-        <ul>
-          <li>База данных с людьми</li>
-          <li>Второй пункт</li>
-          <li>Третий пункт</li>
-         </ul>
-      </div>
+      <%- include('blocks/footer') -%>
     </div>
-      <div class="block_with_status_and_start">
-         <div><p>Статус: пройдено/не пройдено</p></div>
-         <div><a class="startcourse" href="/course/<%= data.id %>/1"><p>Перейти к курсу</p></a></div>
-      </div>
-    </div>
-  </div>
-    </main>
-
-    <%- include('blocks/footer') -%>
-   </div>
- </body> 
- </html>     
+  </body>
+</html>

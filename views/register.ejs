@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/header_and_footer.css">
-  <link rel="stylesheet" href="/css/mainpage-style.css">
-  <title>Редактор кода</title>
-</head>
-<body> 
-  <script src="/js/code-script.js"></script>
-  <div class="wrapper">
- <%- include('blocks/header') -%>
-    <main>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/header_and_footer.css" />
+    <link rel="stylesheet" href="/css/mainpage-style.css" />
+    <title>Редактор кода</title>
+  </head>
+  <body>
+    <script src="/js/code-script.js"></script>
+    <div class="wrapper">
+      <%- include('blocks/header') -%>
+      <main>
+        <!-- свойства для блока, содержащего контент модального окна -->
+        <%- include('blocks/log-in') -%>
+        <!--  свойства для блока, содержащего контент модального окна -->
+        <p class="maintitle">Заполните бланк регистрации</p>
+        <p>Поле для регистрации</p>
+        <form action="/register" method="post">
+          <input placeholder="логин" name="username" />
+          <input placeholder="почта" name="email" />
+          <input placeholder="пароль" name="password" />
+          <button type="submit">button</button>
+        </form>
+      </main>
 
-      <!-- свойства для блока, содержащего контент модального окна -->
-      <%- include('blocks/log-in') -%>
-      <!--  свойства для блока, содержащего контент модального окна -->
-      <p class="maintitle">Заполните бланк регистрации</p>
-      <p>Поле для регистрации</p>
-      <form action="/register" method="post">
-        <input placeholder="логин" name="username">
-        <input placeholder="почта" name="email">
-        <input placeholder="пароль" name="password">
-        <button type="submit">button</button>
-    </form>
-      
-    </main>
-
-    <%- include('blocks/footer') -%>
-   </div>
- </body> 
- </html>     
+      <%- include('blocks/footer') -%>
+    </div>
+  </body>
+</html>

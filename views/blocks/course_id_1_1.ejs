@@ -1,5 +1,18 @@
-<p>Наступила пора сделать что-нибудь полезное. Например, получить все данные из таблицы.
+<div class="tasktextcourse">В общем виде SQL запрос выглядит следующим образом:</div>
 
-  Для получения всех данных из таблицы с названием category достаточно выполнить запрос:</p>
+<div class="tasktextcourse">SELECT список_полей</div>
+<div class="tasktextcourse">FROM список_таблиц</div>
+<div class="tasktextcourse">Хотя на самом деле немного сложнее:</div>
 
-  <p>select * from humans where age = 19</p>
+<div class="tasktextcourse">SELECT список_полей</div>
+<div class="tasktextcourse">FROM список_таблиц</div>
+<div class="tasktextcourse">WHERE ограничения_на_список_строк</div>
+<div class="tasktextcourse">GROUdiv BY условия_группировки</div>
+<div class="tasktextcourse">HAVING ограничения_на_строки_после_группировки</div>
+<div class="tasktextcourse">ORDER BY порядок_сортировки</div>
+<div class="tasktextcourse">LIMIT ограничение_количества_записей</div>
+<div class="tasktextcourse">И даже это еще не все... Но обо всем по порядку.</div>
+
+<div class="tasktextcourse">Для начала напишем первую программу: </div>
+
+<div class="tasktextcourse">select * from humans</div>

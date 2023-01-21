@@ -229,3 +229,29 @@ textarea {
   margin-top: 10px;
   text-decoration: underline;
 }
+
+#secretinput {
+  visibility: hidden;
+}
+
+.tablinks {
+  background-color: #3A4350;
+	padding: 10px;
+  height: 40px;
+	color: white;
+	text-decoration: none;
+	font: 20px Arial;
+  border: none;
+}
+
+.tablinks:hover, .tablinks.active {
+	background-color: #2D2F38;
+}
+
+.panel {
+  overflow: hidden;
+}
+
+.tabcontent {
+  display: none; 
+}

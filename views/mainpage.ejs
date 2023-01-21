@@ -1,50 +1,70 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/header_and_footer.css">
-  <link rel="stylesheet" href="/css/mainpage-style.css">
-  <title>Редактор кода</title>
-</head>
-<body> 
-  <script src="/js/code-script.js"></script>
-  <div class="wrapper">
- <%- include('blocks/header') -%>
-    <main>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/header_and_footer.css" />
+    <link rel="stylesheet" href="/css/mainpage-style.css" />
+    <title>Редактор кода</title>
+  </head>
+  <body>
+    <script src="/js/code-script.js"></script>
+    <!-- <script src="/js/mainpage-script.js"></script> -->
+    <div class="wrapper">
+      <%- include('blocks/header') -%>
+      <main>
+        <!-- свойства для блока, содержащего контент модального окна -->
+        <%- include('blocks/log-in') -%>
+        <!--  свойства для блока, содержащего контент модального окна -->
+        <div class="maintitle">
+          <div class="name_of">
+            Онлайн тренажер с упражнениями и курсами по SQL
+          </div>
+          <div class="description_of">
+            Освой SQL - научись создавать собственные базы данных и составлять
+            запросы к ним
+          </div>
+        </div>
 
-      <!-- свойства для блока, содержащего контент модального окна -->
-      <%- include('blocks/log-in') -%>
-      <!--  свойства для блока, содержащего контент модального окна -->
-      <div class="maintitle"><div class="name_of">Онлайн тренажер с упражнениями и курсами по SQL</div>
-        <div class="description_of">Освой SQL - научись создавать собственные базы данных и составлять запросы к ним</div></div>
-      
-      
-      <div class="info_on_page">
-     
-      <div class="info_add">
-      
-      <div class="part1 part4"><p>Курсы по SQL</p></div>
-      <div class="part2 part3">
-      <p>Текст с описание курса по SQL</p>
-      <a href="/course">Перейти к курс</a>
-      </div>
-      </div>
-      <div class="info_add">
-      <div class="part2 part4"><p>Текст с описание онлайн-тренажёра по SQL</p>
-        <a href="/sandbox">Перейти к редактор кода</a>
-      </div>
-      <div class="part1 part3" >
-      <p>Онлайн-тренажер на основе SQL</p>
+        <div class="info_on_page">
+          <div class="info_add">
+            <div class="part1 part4"><p>Курсы по SQL</p></div>
+            <div class="part2 part3">
+              <p>Текст с описание курса по SQL</p>
+              <a href="/course">Перейти к курс</a>
+            </div>
+          </div>
+          <div class="info_add">
+            <div class="part2 part4">
+              <p>Текст с описание онлайн-тренажёра по SQL</p>
+              <a href="/sandbox">Перейти к редактор кода</a>
+            </div>
+            <div class="part1 part3">
+              <p>Онлайн-тренажер на основе SQL</p>
+            </div>
+          </div>
+        </div>
+        <button id="test">ПРОВЕРКА</button>
+        <div id="test1"></div>
+      </main>
 
-      </div>
-      </div>
-
+      <%- include('blocks/footer') -%>
     </div>
-    </main>
+    <script>
+      var el = document.getElementById("test");
+      if (el) {
+        el.addEventListener("click", getTest);
+      }
 
-    <%- include('blocks/footer') -%>
-   </div>
- </body> 
- </html>     
+      function getTest() {
+        fetch("./sample.txt")
+          .then((res) => res.text())
+          .then((data) => {
+            document.getElementById("test1").innerHTML = data;
+          })
+          .catch((err) => console.log(err));
+      }
+    </script>
+  </body>
+</html>

@@ -9,7 +9,7 @@
   <title>Тренажёр</title>
 </head>
 <body> 
-  <script src="/js/code-script.js"></script>
+<script src="/js/code-script.js"></script>
   <div class="wrapper">
     <%- include('blocks/header') -%>
     <main>
@@ -34,9 +34,9 @@
 
       <div class ="SQL-panel">
    <div class="elem1">
-   <div class="sqlsquare1">
+  <!-- <div class="sqlsquare1">
      <p>SQL Script</p>
-   </div>
+   </div> -->
      <div class="sqlsquare2">
      <p>SQL Query</p>
    </div>
@@ -62,59 +62,96 @@
 
       <div class= "bottompanel">
       <div class="output">
- <div class="panel"><nav>
-     <a href="#" class="active">Data output</a>
-     <a href="#">Data tables</a>
-     <a href="#">Messages</a>
-     </nav>
-     </div>
-     <% if(error != undefined) { %>
-      <p><b>ОШИБКА! Неправильно введен запрос</b></p>
-    <% } else { %>
-   <p><table border="1">
-    <caption><b>База данных Humans</b></caption>
-    <thead>
-    <tr>
-      <% if(select.id != undefined) { %>
-      <td><b>id</b></td>
-      <% } %>
-      <% if(select.sex != undefined) { %>
-      <td><b>sex</b></td>
-      <% } %>
-      <% if(select.name != undefined) { %>
-      <td><b>name</b></td>
-      <% } %>
-      <% if(select.surname != undefined) { %>
-      <td><b>surname</b></td>
-      <% } %>
-      <% if(select.age != undefined) { %>
-      <td><b>age</b></td>
-      <% } %>
-    </tr>
-    </thead>
-    <tbody>
-      <% for(var i=0; i < taskdatabase.length; i++) { %>
-    <tr>
-      <% if(select.id != undefined) { %>
-      <td><b><%= taskdatabase[i].id %></b></td>
-      <% } %>
-      <% if(select.sex != undefined) { %>
-      <td><b><%= taskdatabase[i].sex %></b></td>
-      <% } %>
-      <% if(select.name != undefined) { %>
-      <td><b><%= taskdatabase[i].name %></b></td>
-      <% } %>
-      <% if(select.surname != undefined) { %>
-      <td><b><%= taskdatabase[i].surname %></b></td>
-      <% } %>
-      <% if(select.age != undefined) { %>
-      <td><b><%= taskdatabase[i].age %></b></td> 
-      <% } %>
-    </tr>
-    <% } %>
-    </tbody>
-    </table></p>
-    <% } %>
+        <div class="panel">
+          <nav>
+            <button class="tablinks" onclick="opentab(event, 'dataaoutput')" id="defaultOpen">Data output</button>
+            <button class="tablinks" onclick="opentab(event, 'datatables')">Data tables</button>
+            <button class="tablinks" onclick="opentab(event, 'messages')">Messages</button>
+          </nav>
+       </div>
+          
+      <div id="dataaoutput" class="tabcontent">
+       <% if(error == undefined) { %>
+        <b>База данных Humans</b>
+         <p><table border="1">
+        <!-- <caption><b>База данных Humans</b></caption> --> 
+          <thead>
+          <tr>
+            <% if(select.id != undefined) { %>
+            <td><b>id</b></td>
+            <% } %>
+            <% if(select.sex != undefined) { %>
+            <td><b>sex</b></td>
+            <% } %>
+            <% if(select.name != undefined) { %>
+            <td><b>name</b></td>
+            <% } %>
+            <% if(select.surname != undefined) { %>
+            <td><b>surname</b></td>
+            <% } %>
+            <% if(select.age != undefined) { %>
+            <td><b>age</b></td>
+            <% } %>
+          </tr>
+          </thead>
+          <tbody>
+            <% for(var i=0; i < taskdatabase.length; i++) { %>
+          <tr>
+            <% if(select.id != undefined) { %>
+            <td><b><%= taskdatabase[i].id %></b></td>
+            <% } %>
+            <% if(select.sex != undefined) { %>
+            <td><b><%= taskdatabase[i].sex %></b></td>
+            <% } %>
+            <% if(select.name != undefined) { %>
+            <td><b><%= taskdatabase[i].name %></b></td>
+            <% } %>
+            <% if(select.surname != undefined) { %>
+            <td><b><%= taskdatabase[i].surname %></b></td>
+            <% } %>
+            <% if(select.age != undefined) { %>
+            <td><b><%= taskdatabase[i].age %></b></td> 
+            <% } %>
+          </tr>
+          <% } %>
+          </tbody>
+          </table></p>
+          <% } %>
+      </div>
+ 
+      <div id="datatables" class="tabcontent">
+        <b>База данных Humans</b>
+         <p><table border="1">
+       <!--  <caption><b>База данных Humans</b></caption>--> 
+          <thead>
+          <tr>
+            <td><b>id</b></td>
+            <td><b>sex</b></td>
+            <td><b>name</b></td>
+            <td><b>surname</b></td>
+            <td><b>age</b></td>
+          </tr>
+          </thead>
+          <tbody>
+            <% for(var i=0; i < rightdatabase.length; i++) { %>
+          <tr>
+            <td><b><%= rightdatabase[i].id %></b></td>
+            <td><b><%= rightdatabase[i].sex %></b></td>
+            <td><b><%= rightdatabase[i].name %></b></td>
+            <td><b><%= rightdatabase[i].surname %></b></td>
+            <td><b><%= rightdatabase[i].age %></b></td> 
+          </tr>
+          <% } %>
+          </tbody>
+          </table></p>
+      </div>
+ 
+      <div id="messages" class="tabcontent">
+       <% if(error != undefined) { %>
+         <p><b>ОШИБКА! Неправильно введен запрос</b></p>
+       <% } %>
+      </div>
+ 
  </div>
         </div>
       </div>

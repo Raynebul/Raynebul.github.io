@@ -11,9 +11,7 @@
 <body> 
   <script src="/js/code-script.js"></script>
   <script src="/js/cousre-editor-base.js"></script>
-  <script>
- 
-  </script>
+
   <div class="wrapper">
  <%- include('blocks/header') -%>
     <main>
@@ -61,8 +59,9 @@
             </form> 
               <!-- PUT -->
                <p>
+                <button form="myform" type="sybmit">Сохранить</button>
                 <form method="POST"  action="/sandbox/<%= data.id %>/delete"> 
-                 <button type="submit">Delete</button>
+                 <button type="submit">Удалить</button>
                  </form>
                </p> 
               </div>
@@ -79,10 +78,9 @@
        <span id="Username">от: <%= data.author %></span>
        </div>
        <div class="buttons">
-        <button class="run1" onclick="runCode()"><div id="run">Выполнить</div></button>  
-        <button form="myform" class="button1" type="submit"><div class="button">Сохранить</div></button>
-
-         <button class="button1" onclick="location.href='#openSettings'"><div class="button">Настройки</div></button>
+        <button form="myform1" class="run1" type="submit" onclick="runCode()"><div id="run">Выполнить</div></button>  
+        <button form="myform2" class="button1" type="submit" onclick="save()"><div class="button">Сохранить</div></button>
+        <button class="button1" onclick="location.href='#openSettings'"><div class="button">Настройки</div></button>
        </div>
      </div>
  
@@ -96,7 +94,7 @@
          </div>
  
      <div class="script">
-       <textarea form="myform" id='outputSQLScript' name="script">
+       <textarea id='outputSQLScript' name="script">
        </textarea>
        <!-- <table border="1" width="370">
         <caption><b>Перепись населения</b></caption>
@@ -126,23 +124,116 @@
              <button class = "clear1" onclick="eraseTheText('outputSQLquery')"><div class ="clear"><p>Очистить</p></div></button>
        </div>
                <aside class="query">
-         <textarea form="myform" id='outputSQLquery'>
-       </textarea>
+       <!--  <form id="myform2" action="/sandbox/<%= data.id %>" method="post"> --> 
+            <form id="myform1" action="/sandbox/<%= data.id %>" method="post">      
+              <textarea id='outputSQLquery' name = "query">
+              </textarea>
+             <!-- <input type="text" id="secretvalue" value="1" name="secretvalue">-->
+            </form>
+          <!--  <input type="text" class="secretvalue" value="1" name="secretvalue">
+          </form> --> 
        </aside>
          </div>
        </div>
       <hr id="secondline">
      <div class="output">
-     <div class="panel"><nav>
-         <a href="#" class="active">Data output</a>
-         <a href="#">Data tables</a>
-         <a href="#">Messages</a>
+     <div class="panel">
+         <nav>
+           <button class="tablinks" onclick="opentab(event, 'dataaoutput')" id="defaultOpen">Data output</button>
+           <button class="tablinks" onclick="opentab(event, 'datatables')">Data tables</button>
+           <button class="tablinks" onclick="opentab(event, 'messages')">Messages</button>
          </nav>
-         </div>
-       <p></p>
+      </div>
+         
+     <div id="dataaoutput" class="tabcontent">
+      <% if(error == undefined) { %>
+        <b>База данных Humans</b>
+        <p><table border="1">
+        <!-- <caption><b>База данных Humans</b></caption>-->
+         <thead>
+         <tr>
+           <% if(select.id != undefined) { %>
+           <td><b>id</b></td>
+           <% } %>
+           <% if(select.sex != undefined) { %>
+           <td><b>sex</b></td>
+           <% } %>
+           <% if(select.name != undefined) { %>
+           <td><b>name</b></td>
+           <% } %>
+           <% if(select.surname != undefined) { %>
+           <td><b>surname</b></td>
+           <% } %>
+           <% if(select.age != undefined) { %>
+           <td><b>age</b></td>
+           <% } %>
+         </tr>
+         </thead>
+         <tbody>
+           <% for(var i=0; i < taskdatabase.length; i++) { %>
+         <tr>
+           <% if(select.id != undefined) { %>
+           <td><b><%= taskdatabase[i].id %></b></td>
+           <% } %>
+           <% if(select.sex != undefined) { %>
+           <td><b><%= taskdatabase[i].sex %></b></td>
+           <% } %>
+           <% if(select.name != undefined) { %>
+           <td><b><%= taskdatabase[i].name %></b></td>
+           <% } %>
+           <% if(select.surname != undefined) { %>
+           <td><b><%= taskdatabase[i].surname %></b></td>
+           <% } %>
+           <% if(select.age != undefined) { %>
+           <td><b><%= taskdatabase[i].age %></b></td> 
+           <% } %>
+         </tr>
+         <% } %>
+         </tbody>
+         </table></p>
+         <% } %>
+     </div>
+
+     <div id="datatables" class="tabcontent">
+      <b>База данных Humans</b>
+        <p><table border="1">
+        <!-- <caption><b>База данных Humans</b></caption>-->
+         <thead>
+         <tr>
+           <td><b>id</b></td>
+           <td><b>sex</b></td>
+           <td><b>name</b></td>
+           <td><b>surname</b></td>
+           <td><b>age</b></td>
+         </tr>
+         </thead>
+         <tbody>
+           <% for(var i=0; i < rightdatabase.length; i++) { %>
+         <tr>
+           <td><b><%= rightdatabase[i].id %></b></td>
+           <td><b><%= rightdatabase[i].sex %></b></td>
+           <td><b><%= rightdatabase[i].name %></b></td>
+           <td><b><%= rightdatabase[i].surname %></b></td>
+           <td><b><%= rightdatabase[i].age %></b></td> 
+         </tr>
+         <% } %>
+         </tbody>
+         </table></p>
+     </div>
+
+     <div id="messages" class="tabcontent">
+      <% if(error != undefined) { %>
+        <p><b>ОШИБКА! Неправильно введен запрос</b></p>
+      <% } %>
+     </div>
+
      </div>
        </main>
     <%- include('blocks/footer') -%>
    </div>
+   <script>
+    // Get the element with id="defaultOpen" and click on it
+   document.getElementById("defaultOpen").click();
+     </script>
  </body> 
  </html>
