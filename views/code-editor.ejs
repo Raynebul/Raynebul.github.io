@@ -1,102 +1,323 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/header_and_footer.css">
-  <link rel="stylesheet" href="/css/code-editor-style.css">
-  <title>Редактор кода</title>
-</head>
-<body> 
-  <script src="/js/code-script.js"></script>
-  <script src="/js/cousre-editor-base.js"></script>
+  <head>
+    <%- include('blocks/head') -%>
+    <link rel="stylesheet" href="/css/code-editor-style.css" />
+    <link rel="stylesheet" href="/css/nav-style.css" />
+    <title>Редактор кода</title>
+  </head>
+  <body>
+    <script src="/js/code-script.js"></script>
+    <script src="/js/cousre-editor-base.js"></script>
+    <%- include('blocks/header') -%>
+    <div class="container-fluid">
+      <main>
+        <!-- свойства для блока, содержащего контент модального окна -->
+        <%- include('blocks/log-in') -%>
+        <!--  свойства для блока, содержащего контент модального окна -->
 
-  <div class="wrapper">
- <%- include('blocks/header') -%>
-    <main>
-
-      <!-- свойства для блока, содержащего контент модального окна -->
-      <%- include('blocks/log-in') -%>
-      <!--  свойства для блока, содержащего контент модального окна -->
-      
         <!-- модальный блок с настройками -->
-      <div id="openSettings" class="modal">
+        <!-- <div id="openSettings" class="modal">
           <div class="modal-dialog">
             <div class="modal-content">
-              <div class="blocksettings"> 
-              <a href="#close" title="Close" class="close">×</a>
-              <p id="h1settings">Настройки</p>
-              <div class="settingsnameproject">
-              <span id="Projectnamesetting">Проект: <%= data.projectname %></span>
-              <span id="Profilenamesetting">от: <%= data.author %></span>
-              <span id="Descriptionsetting">Описание проекта: </span>
-              </div>
-              <!-- <form action="/sandbox/<%= data.id %>" method="post"> -->
-              <!-- <input type="hidden" name="_method" value="PUT"> -->
-              <form id="myform" action="/sandbox/<%= data.id %>" method="post">        
-              <textarea id="description" type="text" placeholder="Введите текст" name="projectDescription" ><%= data.projectDescription %></textarea>
-              <p id="autosave">Автосохранения</p>
-              <div class="switchbox"><label class="switch" style="font-size: 0.7rem">
-                <% if(data.autosave=="true") { %>
-                <input type="checkbox" name="autosave" id="autosave" checked>
-                <% } else { %>
-                  <input type="checkbox" name="autosave" id="autosave">
-                  <% } %>
-                <span class="slider-round"></span>
-              </label>
-              </div>
-              <p id="private">Приватный</p>
-              <div class="switchbox"><label class="switch" style="font-size: 0.7rem">
-              <% if(data.private=="true") { %>
-              <input type="checkbox" name="private" id="private" checked>
-              <% } else { %>
-                <input type="checkbox" name="private" id="private">
-                <% } %>
-              <span class="slider-round"></span>
-              </label>
-              </div>
-            </form> 
-              <!-- PUT -->
-               <p>
+              <div class="blocksettings">
+                <a href="#close" title="Close" class="close">×</a>
+                <div id="h1settings">Настройки</div>
+                <div class="settingsnameproject">
+                  <span id="Projectnamesetting"
+                    >Проект: <%= data.projectname %></span
+                  >
+                  <span id="Profilenamesetting">от: <%= data.author %></span>
+                  <span id="Descriptionsetting">Описание проекта: </span>
+                </div>
+                <form
+                  id="myform"
+                  action="/sandbox/<%= data.id %>"
+                  method="post"
+                >
+                  <textarea
+                    id="description"
+                    type="text"
+                    placeholder="Введите текст"
+                    name="projectDescription"
+                  >
+<%= data.projectDescription %></textarea
+                  >
+                  <p id="autosave">Автосохранения</p>
+                  <div class="switchbox">
+                    <label class="switch" style="font-size: 0.7rem">
+                      <% if(data.autosave=="true") { %>
+                      <input
+                        type="checkbox"
+                        name="autosave"
+                        id="autosave"
+                        checked
+                      />
+                      <% } else { %>
+                      <input type="checkbox" name="autosave" id="autosave" />
+                      <% } %>
+                      <span class="slider-round"></span>
+                    </label>
+                  </div>
+                  <p id="private">Приватный</p>
+                  <div class="switchbox">
+                    <label class="switch" style="font-size: 0.7rem">
+                      <% if(data.private=="true") { %>
+                      <input
+                        type="checkbox"
+                        name="private"
+                        id="private"
+                        checked
+                      />
+                      <% } else { %>
+                      <input type="checkbox" name="private" id="private" />
+                      <% } %>
+                      <span class="slider-round"></span>
+                    </label>
+                  </div>
+                </form>
                 <button form="myform" type="sybmit">Сохранить</button>
-                <form method="POST"  action="/sandbox/<%= data.id %>/delete"> 
-                 <button type="submit">Удалить</button>
-                 </form>
-               </p> 
+                <form method="POST" action="/sandbox/<%= data.id %>/delete">
+                  <button type="submit">Удалить</button>
+                </form>
               </div>
             </div>
           </div>
-
-        </div>    
+        </div> -->
         <!-- модальный блок с настройками -->
+        <!-- Button trigger modal -->
 
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal1"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel1"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="settingsnameproject">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Проект: <%= data.projectname %>
+                  </h5>
+                  <h4 class="modal-title">от: <%= data.author %></h4>
+                </div>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form
+                  id="myform"
+                  action="/sandbox/<%= data.id %>"
+                  method="post"
+                >
+                  <textarea
+                    id="description"
+                    type="text"
+                    placeholder="Введите текст"
+                    name="projectDescription"
+                  >
+<%= data.projectDescription %></textarea
+                  >
 
-     <div class="top">
-       <div class="settings">
-       <span id="Project">Проект: <%= data.projectname %></span>
-       <span id="Username">от: <%= data.author %></span>
-       </div>
-       <div class="buttons">
-        <button form="myform1" class="run1" type="submit" onclick="runCode()"><div id="run">Выполнить</div></button>  
-        <button form="myform2" class="button1" type="submit" onclick="save()"><div class="button">Сохранить</div></button>
-        <button class="button1" onclick="location.href='#openSettings'"><div class="button">Настройки</div></button>
-       </div>
-     </div>
- 
-      <div class="middle">
+                  <div class="form-check form-switch">
+                    <% if(data.autosave=="true") { %>
+                    <input name="autosave" class="form-check-input" type="checkbox" checked id="flexSwitchCheckDefault">
+                    <% } else { %>
+                      <input name="autosave" class="form-check-input" type="checkbox"id="flexSwitchCheckDefault">
+                      <% } %>
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Автосохранения</label>
+                  </div>
+
+                  <div class="form-check form-switch">
+                    <% if(data.private=="true") { %>
+                      <input name="private" class="form-check-input" type="checkbox" checked id="flexSwitchCheckDefault">
+                      <% } else { %>
+                        <input name="private" class="form-check-input" type="checkbox"id="flexSwitchCheckDefault">
+                        <% } %>
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Приватный</label>
+                  </div>
+
+                 <!-- <p id="autosave">Автосохранения</p>
+                  <div class="switchbox">
+                    <label class="switch" style="font-size: 0.7rem">
+                      <% if(data.autosave=="true") { %>
+                      <input
+                        type="checkbox"
+                        name="autosave"
+                        id="autosave"
+                        checked
+                      />
+                      <% } else { %>
+                      <input type="checkbox" name="autosave" id="autosave" />
+                      <% } %>
+                      <span class="slider-round"></span>
+                    </label>
+                  </div>
+                  <p id="private">Приватный</p>
+                  <div class="switchbox">
+                    <label class="switch" style="font-size: 0.7rem">
+                      <% if(data.private=="true") { %>
+                      <input
+                        type="checkbox"
+                        name="private"
+                        id="private"
+                        checked
+                      />
+                      <% } else { %>
+                      <input type="checkbox" name="private" id="private" />
+                      <% } %>
+                      <span class="slider-round"></span>
+                    </label>
+                  </div> -->
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button form="myform" type="sybmit" class="btn btn-primary">
+                  Сохранить
+                </button>
+                <form method="POST" action="/sandbox/<%= data.id %>/delete">
+                  <button type="submit" class="btn btn-danger">Удалить</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="top">
+          <div class="settings">
+            <div id="Project">Проект: <%= data.projectname %></div>
+            <div id="Username">от: <%= data.author %></div>
+          </div>
+          <div class="buttons">
+            <button
+              form="myform1"
+              class="run1 btn btn-success"
+              type="submit"
+            >
+              Выполнить
+            </button>
+            <button
+              form="myform2"
+              class="button1 btn btn-secondary"
+              type="submit"
+              onclick="save()"
+            >
+              Сохранить
+            </button>
+            <button
+              type="button"
+              class="btn button1 btn btn-secondary"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal1"
+            >
+              Настройки
+            </button>
+          </div>
+        </div>
+
+        <div class="container-fluid">
+          <div class="row row-cols-2 g-4">
+            <div class="col">
+              <div class="SQLScript">
+                <div class="elem1">
+                  <h3><div class="badge bg-light text-dark shadow-sm">
+                    SQL Script
+                  </div></h3>
+                  <button
+                    class="clear1 btn btn-light shadow-sm"
+                    onclick="eraseTheText('outputSQLScript')"
+                  >
+                    Очистить
+                  </button>
+                </div>
+
+                <div class="script">
+                  <textarea
+                    id="outputSQLScript"
+                    class="form-control shadow code"
+                    name="script"
+                    style="background-color: white"
+                    spellcheck="false"
+                  >
+                  </textarea>
+                  <!-- <table border="1" width="370">
+   <caption><b>Перепись населения</b></caption>
+   <thead>
+   <tr>
+     <td><b>Год переписи</b></td>
+     <td><b>Нас.</b></td>
+     <td><b>%±</b></td>
+   </tr>
+   </thead>
+   <tbody>
+   <tr>
+     <td><b>1850</b></td>
+     <td>2396</td>
+     <td>—</td>
+   </tr>
+   </tbody>
+   </table> -->
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="SQLQuery">
+                <div class="elem2">
+                 <h3><div class="badge bg-light text-dark shadow-sm">
+                    SQL Query
+                  </div></h3> 
+                  <button
+                    class="clear1 btn btn-light shadow-sm"
+                    onclick="eraseTheText('outputSQLquery')"
+                  >
+                    Очистить
+                  </button>
+                </div>
+                <aside class="query">
+                  <!--  <form id="myform2" action="/sandbox/<%= data.id %>" method="post"> -->
+                  <form
+                    id="myform1"
+                    action="/sandbox/<%= data.id %>"
+                    method="post"
+                  >
+                    <textarea
+                      id="outputSQLquery"
+                      class="form-control shadow code"
+                      name="query"
+                      style="background-color: white"
+                      spellcheck="false"
+                    >
+                    </textarea>
+                    <!-- <input type="text" id="secretvalue" value="1" name="secretvalue">-->
+                  </form>
+                  <!--  <input type="text" class="secretvalue" value="1" name="secretvalue">
+           </form> -->
+                </aside>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="middle">
          <div class = "SQLScript">
                  <div class="elem1">
        <div class="sqlsquare1">
          <p>SQL Script</p>
        </div>
-                   <button class = "clear1" onclick="eraseTheText('outputSQLScript')"><div class ="clear"><p>Очистить</p></div></button>
+                   <button class = "clear1 btn btn-light" onclick="eraseTheText('outputSQLScript')">Очистить</button>
          </div>
  
      <div class="script">
        <textarea id='outputSQLScript' name="script">
        </textarea>
-       <!-- <table border="1" width="370">
+        <table border="1" width="370">
         <caption><b>Перепись населения</b></caption>
         <thead>
         <tr>
@@ -112,7 +333,7 @@
           <td>—</td>
         </tr>
         </tbody>
-        </table> -->
+        </table> 
      </div>
  
        </div>
@@ -121,119 +342,340 @@
        <div class="sqlsquare2">
          <p>SQL Query</p>
        </div>
-             <button class = "clear1" onclick="eraseTheText('outputSQLquery')"><div class ="clear"><p>Очистить</p></div></button>
+             <button class = "clear1 btn btn-light" onclick="eraseTheText('outputSQLquery')">Очистить</button>
        </div>
                <aside class="query">
-       <!--  <form id="myform2" action="/sandbox/<%= data.id %>" method="post"> --> 
+       <form id="myform2" action="/sandbox/<%= data.id %>" method="post"> 
             <form id="myform1" action="/sandbox/<%= data.id %>" method="post">      
               <textarea id='outputSQLquery' name = "query">
               </textarea>
-             <!-- <input type="text" id="secretvalue" value="1" name="secretvalue">-->
-            </form>
-          <!--  <input type="text" class="secretvalue" value="1" name="secretvalue">
-          </form> --> 
+              <input type="text" id="secretvalue" value="1" name="secretvalue">-->
+        <!-- </form>-->
+        <!--  <input type="text" class="secretvalue" value="1" name="secretvalue">
+          </form> 
        </aside>
          </div>
-       </div>
-      <hr id="secondline">
-     <div class="output">
-     <div class="panel">
-         <nav>
-           <button class="tablinks" onclick="opentab(event, 'dataaoutput')" id="defaultOpen">Data output</button>
-           <button class="tablinks" onclick="opentab(event, 'datatables')">Data tables</button>
-           <button class="tablinks" onclick="opentab(event, 'messages')">Messages</button>
-         </nav>
-      </div>
-         
-     <div id="dataaoutput" class="tabcontent">
-      <% if(error == undefined) { %>
-        <b>База данных Humans</b>
-        <p><table border="1">
-        <!-- <caption><b>База данных Humans</b></caption>-->
-         <thead>
-         <tr>
-           <% if(select.id != undefined) { %>
-           <td><b>id</b></td>
-           <% } %>
-           <% if(select.sex != undefined) { %>
-           <td><b>sex</b></td>
-           <% } %>
-           <% if(select.name != undefined) { %>
-           <td><b>name</b></td>
-           <% } %>
-           <% if(select.surname != undefined) { %>
-           <td><b>surname</b></td>
-           <% } %>
-           <% if(select.age != undefined) { %>
-           <td><b>age</b></td>
-           <% } %>
-         </tr>
-         </thead>
-         <tbody>
-           <% for(var i=0; i < taskdatabase.length; i++) { %>
-         <tr>
-           <% if(select.id != undefined) { %>
-           <td><b><%= taskdatabase[i].id %></b></td>
-           <% } %>
-           <% if(select.sex != undefined) { %>
-           <td><b><%= taskdatabase[i].sex %></b></td>
-           <% } %>
-           <% if(select.name != undefined) { %>
-           <td><b><%= taskdatabase[i].name %></b></td>
-           <% } %>
-           <% if(select.surname != undefined) { %>
-           <td><b><%= taskdatabase[i].surname %></b></td>
-           <% } %>
-           <% if(select.age != undefined) { %>
-           <td><b><%= taskdatabase[i].age %></b></td> 
-           <% } %>
-         </tr>
-         <% } %>
-         </tbody>
-         </table></p>
-         <% } %>
-     </div>
+       </div> -->
+        <hr id="secondline" />
+        <div class="container-fluid">
+          <div class="row row-cols-1">
+            <div class="col">
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link active"
+                    id="home-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#home"
+                    type="button"
+                    role="tab"
+                    aria-controls="home"
+                    aria-selected="true"
+                  >
+                    Вывод
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="profile-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#profile"
+                    type="button"
+                    role="tab"
+                    aria-controls="profile"
+                    aria-selected="false"
+                  >
+                    Базы данных
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="contact-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#contact"
+                    type="button"
+                    role="tab"
+                    aria-controls="contact"
+                    aria-selected="false"
+                  >
+                    Ошибки
+                  </button>
+                </li>
+              </ul>
 
-     <div id="datatables" class="tabcontent">
-      <b>База данных Humans</b>
-        <p><table border="1">
-        <!-- <caption><b>База данных Humans</b></caption>-->
-         <thead>
-         <tr>
-           <td><b>id</b></td>
-           <td><b>sex</b></td>
-           <td><b>name</b></td>
-           <td><b>surname</b></td>
-           <td><b>age</b></td>
-         </tr>
-         </thead>
-         <tbody>
-           <% for(var i=0; i < rightdatabase.length; i++) { %>
-         <tr>
-           <td><b><%= rightdatabase[i].id %></b></td>
-           <td><b><%= rightdatabase[i].sex %></b></td>
-           <td><b><%= rightdatabase[i].name %></b></td>
-           <td><b><%= rightdatabase[i].surname %></b></td>
-           <td><b><%= rightdatabase[i].age %></b></td> 
-         </tr>
-         <% } %>
-         </tbody>
-         </table></p>
-     </div>
+              <div class="tab-content" id="myTabContent">
+                <div
+                  class="tab-pane fade show active"
+                  id="home"
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                >
+                  <% if(error == undefined) { %>
+                  <b>База данных Humans</b>
+                  <table class="table table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <% if(select.id != undefined) { %>
+                        <th scope="col">id</th>
+                        <% } %> <% if(select.sex != undefined) { %>
+                        <th scope="col">sex</th>
+                        <% } %> <% if(select.name != undefined) { %>
+                        <th scope="col">name</th>
+                        <% } %> <% if(select.surname != undefined) { %>
+                        <th scope="col">surname</th>
+                        <% } %> <% if(select.age != undefined) { %>
+                        <th scope="col">age</th>
+                        <% } %>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% for(var i=0; i < taskdatabase.length; i++) { %>
+                      <tr>
+                        <% if(select.id != undefined) { %>
+                        <th scope="row"><%= taskdatabase[i].id %></th>
+                        <% } %> <% if(select.sex != undefined) { %>
+                        <td><%= taskdatabase[i].sex %></td>
+                        <% } %> <% if(select.name != undefined) { %>
+                        <td><%= taskdatabase[i].name %></td>
+                        <% } %> <% if(select.surname != undefined) { %>
+                        <td><%= taskdatabase[i].surname %></td>
+                        <% } %> <% if(select.age != undefined) { %>
+                        <td><%= taskdatabase[i].age %></td>
+                        <% } %>
+                      </tr>
+                      <% } %>
+                    </tbody>
+                  </table>
+                  <% } %>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="profile"
+                  role="tabpanel"
+                  aria-labelledby="profile-tab"
+                >
+                  <b>База данных Humans</b>
+                  <table class="table table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">sex</th>
+                        <th scope="col">name</th>
+                        <th scope="col">surname</th>
+                        <th scope="col">age</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% for(var i=0; i < rightdatabase.length; i++) { %>
+                      <tr>
+                        <th scope="row"><%= rightdatabase[i].id %></th>
+                        <td><%= rightdatabase[i].sex %></td>
+                        <td><%= rightdatabase[i].name %></td>
+                        <td><%= rightdatabase[i].surname %></td>
+                        <td><%= rightdatabase[i].age %></td>
+                      </tr>
+                      <% } %>
+                    </tbody>
+                  </table>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="contact"
+                  role="tabpanel"
+                  aria-labelledby="contact-tab"
+                >
+                  <% if(error != undefined) { %>
+                  <div
+                    class="alert alert-danger d-flex align-items-center"
+                    role="alert"
+                  >
+                    <svg
+                      class="bi flex-shrink-0 me-2"
+                      width="24"
+                      height="24"
+                      role="img"
+                      aria-label="Danger:"
+                    >
+                      <use xlink:href="#exclamation-triangle-fill" />
+                    </svg>
+                    <div>ОШИБКА! Неправильно введен запрос</div>
+                  </div>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="output">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active"
+                id="home-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#home"
+                type="button"
+                role="tab"
+                aria-controls="home"
+                aria-selected="true"
+              >
+                Вывод
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="profile-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#profile"
+                type="button"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="false"
+              >
+                Базы данных
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="contact-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#contact"
+                type="button"
+                role="tab"
+                aria-controls="contact"
+                aria-selected="false"
+              >
+                Ошибки
+              </button>
+            </li>
+          </ul>
 
-     <div id="messages" class="tabcontent">
-      <% if(error != undefined) { %>
-        <p><b>ОШИБКА! Неправильно введен запрос</b></p>
-      <% } %>
-     </div>
-
-     </div>
-       </main>
+          <div class="tab-content" id="myTabContent">
+            <div
+              class="tab-pane fade show active"
+              id="home"
+              role="tabpanel"
+              aria-labelledby="home-tab"
+            >
+              <% if(error == undefined) { %>
+              <b>База данных Humans</b>
+              <table class="table table-striped table-sm">
+                <thead>
+                  <tr>
+                    <% if(select.id != undefined) { %>
+                    <th scope="col">id</th>
+                    <% } %> <% if(select.sex != undefined) { %>
+                    <th scope="col">sex</th>
+                    <% } %> <% if(select.name != undefined) { %>
+                    <th scope="col">name</th>
+                    <% } %> <% if(select.surname != undefined) { %>
+                    <th scope="col">surname</th>
+                    <% } %> <% if(select.age != undefined) { %>
+                    <th scope="col">age</th>
+                    <% } %>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for(var i=0; i < taskdatabase.length; i++) { %>
+                  <tr>
+                    <% if(select.id != undefined) { %>
+                    <th scope="row"><%= taskdatabase[i].id %></th>
+                    <% } %> <% if(select.sex != undefined) { %>
+                    <td><%= taskdatabase[i].sex %></td>
+                    <% } %> <% if(select.name != undefined) { %>
+                    <td><%= taskdatabase[i].name %></td>
+                    <% } %> <% if(select.surname != undefined) { %>
+                    <td><%= taskdatabase[i].surname %></td>
+                    <% } %> <% if(select.age != undefined) { %>
+                    <td><%= taskdatabase[i].age %></td>
+                    <% } %>
+                  </tr>
+                  <% } %>
+                </tbody>
+              </table>
+              <% } %>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="profile"
+              role="tabpanel"
+              aria-labelledby="profile-tab"
+            >
+              <b>База данных Humans</b>
+              <table class="table table-striped table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">sex</th>
+                    <th scope="col">name</th>
+                    <th scope="col">surname</th>
+                    <th scope="col">age</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for(var i=0; i < rightdatabase.length; i++) { %>
+                  <tr>
+                    <th scope="row"><%= rightdatabase[i].id %></th>
+                    <td><%= rightdatabase[i].sex %></td>
+                    <td><%= rightdatabase[i].name %></td>
+                    <td><%= rightdatabase[i].surname %></td>
+                    <td><%= rightdatabase[i].age %></td>
+                  </tr>
+                  <% } %>
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="contact"
+              role="tabpanel"
+              aria-labelledby="contact-tab"
+            >
+              <% if(error != undefined) { %>
+              <div
+                class="alert alert-danger d-flex align-items-center"
+                role="alert"
+              >
+                <svg
+                  class="bi flex-shrink-0 me-2"
+                  width="24"
+                  height="24"
+                  role="img"
+                  aria-label="Danger:"
+                >
+                  <use xlink:href="#exclamation-triangle-fill" />
+                </svg>
+                <div>ОШИБКА! Неправильно введен запрос</div>
+              </div>
+              <% } %>
+            </div>
+          </div>
+        </div> -->
+      </main>
+    </div>
     <%- include('blocks/footer') -%>
-   </div>
-   <script>
-    // Get the element with id="defaultOpen" and click on it
-   document.getElementById("defaultOpen").click();
-     </script>
- </body> 
- </html>
+    <script>
+      // Get the element with id="defaultOpen" and click on it
+      document.getElementById("defaultOpen").click();
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+      integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+      integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

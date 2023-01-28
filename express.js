@@ -82,7 +82,10 @@ app.use(express.static("public"));
 //GET РЕАЛИЗОВАНО
 app.get("/", (req, res) => {
   console.log(req.headers["cookie"]);
-  res.render("mainpage", { username: req.session.username });
+  res.render("mainpage", 
+  { 
+    username: req.session.username 
+  });
   //res.send({message: 'HERE WE GO!'});
 });
 
@@ -91,7 +94,10 @@ app.post("/", (req, res) => {
   req.session.username = undefined;
   req.session.password = undefined;
   req.session.email = undefined;
-  res.render("mainpage", { username: req.session.username });
+  res.render("mainpage", 
+  { 
+    username: req.session.username 
+  });
   //res.send({message: 'HERE WE GO!'});
 });
 
@@ -110,6 +116,9 @@ app.get("/course", (req, res) => {
       username: req.session.username,
     });
   });
+ /* res.render("coursechoice", {
+    username: req.session.username,
+  }); */
 });
 
 //GET РЕАЛИЗОВАНО

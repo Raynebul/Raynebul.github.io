@@ -4,11 +4,12 @@
   
 .wrapper {
  background-color: #d3e4e9;
-  margin: -10px;
-  width: 100%
+ /* margin: -10px;
+  width: 100% */
 }
 
-header, .panel {
+
+ /* header, .panel {
   background-color: #3A4350;
 }
 
@@ -22,12 +23,12 @@ header {
   height: 40px;
   font-size: 25px;
   color: white;
-}
+} 
 
 
 nav {
   display: flex;
-}
+} 
 
 nav a {
 	padding: 10px;
@@ -38,13 +39,13 @@ nav a {
 }
 nav a:hover, nav a.active {
 	background-color: #2D2F38;
-}
+}  
 
 .leftmenu {
   height: 40px;
   display: flex;
-  align-items: center; /* align vertical */
-}
+  align-items: center; /* align vertical 
+} */
 
 .rightmenu {
   margin-left: auto;
@@ -54,26 +55,26 @@ nav a:hover, nav a.active {
 }
 
 
-.modal {
-    position: fixed; /* фиксированное положение */
+/* .modal {
+    position: fixed; 
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0,0,0,0.5); /* цвет фона */
-    opacity: 0; /* по умолчанию модальное окно прозрачно */
-    pointer-events: none; /* элемент невидим для событий мыши */
+    background: rgba(0,0,0,0.5); 
+    opacity: 0; 
+    pointer-events: none; 
     margin: 0;
     padding: 0;
-    transition: opacity 200ms ease-in; /* анимация перехода */
+    transition: opacity 200ms ease-in; 
   }
-  /* при отображении модального окно */
+
   .modal:target {
-    opacity: 1; /* делаем окно видимым */
-    pointer-events: auto; /* элемент видим для событий мыши */
-    overflow-y: auto; /* добавляем прокрутку по y, когда элемент не помещается на страницу */
+    opacity: 1; 
+    pointer-events: auto; 
+    overflow-y: auto; 
   }
-  /* ширина модального окна и его отступы от экрана */
+
   .modal-dialog {
     position: relative;
     width: auto;
@@ -83,15 +84,14 @@ nav a:hover, nav a.active {
   @media (min-width: 576px) {
   .modal-dialog {
       max-width: 500px;
-      margin: 150px auto; /* для отображения модального окна по центру */
+      margin: 150px auto; 
       
   }
   }
-  /* свойства для блока, содержащего контент модального окна */ 
+
   .modal-content {
     position: relative;
     display: flex;
-   /*  */
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid rgba(0,0,0,.2);
@@ -117,7 +117,7 @@ nav a:hover, nav a.active {
   }
   
   .rightblocklogin {
-    /*flex-direction: column; */
+
     margin-left: 40px;
     height: 400px;
   }
@@ -129,7 +129,7 @@ nav a:hover, nav a.active {
   }
   
   }
-  /* свойства для заголовка модального окна */
+ 
   .modal-header {
     align-items: center;
     justify-content: space-between;
@@ -142,9 +142,9 @@ nav a:hover, nav a.active {
     margin-bottom: 0;
     font-size: 1.25rem;
     font-weight: 500;
-    justify-content: center; /* align horizontal */
+    justify-content: center; 
   }
-  /* свойства для кнопки "Закрыть" */
+
   .close {
     float: right;
     font-family: sans-serif;
@@ -158,27 +158,27 @@ nav a:hover, nav a.active {
     padding-right: 10px;
     padding-top: 10px;
   }
-  /* свойства для кнопки "Закрыть" при нахождении её в фокусе или наведении */
+
   .close:focus, .close:hover {
     color: #000;
     text-decoration: none;
     cursor: pointer;
     opacity: .75;
-  }
+  } */
   
   
   .login {
    padding-top: 60px;
   }
   /* свойства для блока, содержащего основное содержимое окна */
-  .modal-body {
+  /*.modal-body {
     position: relative;
     flex: 1 1 auto;
     padding: 15px;
     overflow: auto; 
-  }
+  } */
   
-  .modal-body input {
+  /* .modal-body input {
     margin-top: 10px;
     margin-bottom: 10px;
     width: 350px;
@@ -186,23 +186,23 @@ nav a:hover, nav a.active {
     border-radius: 5px;
     border-color:#808C9D;
     background-color:#B6BEC0;
-  }
+  } */
   
-  .switch {
+  /*.switch {
     position: relative;
     display: inline-block;
     width: 3.75em;
     height: 2.125em;
   }
   
-  /* Hide default HTML checkbox */
+  
   .switch input {
     opacity: 0;
     width: 0;
     height: 0;
   }
   
-  /* Rounded sliders */
+  
   .slider-round {
     position: absolute;
     cursor: pointer;
@@ -231,8 +231,16 @@ nav a:hover, nav a.active {
   
   .switchbox {
     display: flex;
-  }
+  } */
   
+ /* .leftblocklogin {
+    width: 20%;
+    height: 400px;
+    background-color: #3A4350;
+    border-top-left-radius: 1.0rem;
+    border-bottom-left-radius: 1.0rem;
+  } */
+
   #rememberme {
     display: flex;
    /* justify-content: center; /* align horizontal */
@@ -242,7 +250,7 @@ nav a:hover, nav a.active {
     color: #7c898a;
   }
   
-  .switch input:checked + .slider-round {
+  /*.switch input:checked + .slider-round {
     background-color: #2196F3;
   }
   
@@ -254,7 +262,7 @@ nav a:hover, nav a.active {
     -webkit-transform: translateX(1.625em);
     -ms-transform: translateX(1.625em);
     transform: translateX(1.625em);
-  }
+  } */
   
   .modal-options {
     display: flex;
@@ -278,16 +286,17 @@ nav a:hover, nav a.active {
     border-radius: 10%;
   }
   
-  .forget, .register {
+ .register {
     background-color: #fff;
     color: #7c898a;
   }
 
-  footer {
-    height: 40px;
-    padding: 5px 0;
-      color: white;
-    font: 20px Arial;
-      text-align: center;;
-    background-color: grey;
-  }
+.container-fluid{
+    padding: 0 !important;
+}
+
+.navbar-brand {
+  margin-left: 15px !important;
+}
+
+textarea { resize:none; }

@@ -1,0 +1,31 @@
+.tab-content {
+    border-top: transparent;
+    padding: 15px;
+    
+  }
+  
+  #myTab {
+    background-color: #292b2c;
+  
+  }
+  
+  .nav-link {
+    color:#FFF; 
+  }
+  
+  .nav-tabs > li > .nav-link {
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+  }
+  
+  .nav-tabs > li > .nav-link.active {
+    background-color: #EDF3F4;
+    border-bottom: #EDF3F4;
+    border-left:#EDF3F4;
+    border-right:#EDF3F4;
+    border-top:#292b2c;
+    color:#0080FF; 
+  }
+  
+  

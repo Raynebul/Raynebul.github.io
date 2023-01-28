@@ -39,6 +39,7 @@
     color: rgb(255, 255, 255);
 }
 
+/*
 .block_with_status_and_start {
     margin-left: auto;
     width: 20%;
@@ -58,9 +59,9 @@
     margin: 0;
 }
 
-.block_with_status_and_start div {
-    padding-top: 15px;
-}
+.block_with_status_and_start {
+    padding-top: 15px; 
+} */
 
 .course_bottom {
     display: flex;

@@ -1,23 +1,85 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset="utf-8" />
+   <!-- <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/header_and_footer.css" />
-    <link rel="stylesheet" href="/css/mainpage-style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  --> <%- include('blocks/head') -%>  
+  <link rel="stylesheet" href="/css/mainpage-style.css" />
+    
     <title>Редактор кода</title>
   </head>
   <body>
     <script src="/js/code-script.js"></script>
-    <!-- <script src="/js/mainpage-script.js"></script> -->
-    <div class="wrapper">
-      <%- include('blocks/header') -%>
+    <script src="/js/mainpage-script.js"></script>
+    <script src="/js/header_and_footer-script.js"></script>    
+    <script>
+      // let user = {
+      //   name: 'John',
+      //   surname: 'Smith'
+      // };
+   
+      // let response = await fetch("http://localhost:3000", {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json;charset=utf-8'
+      //   },
+      //   body: JSON.stringify(user)
+      // });
+   
+      // let result = await response.json();
+      // alert(result.message); 
+      
+       </script>
+    <%- include('blocks/header') -%>
+    <%- include('blocks/log-in') -%>
+
       <main>
-        <!-- свойства для блока, содержащего контент модального окна -->
-        <%- include('blocks/log-in') -%>
-        <!--  свойства для блока, содержащего контент модального окна -->
-        <div class="maintitle">
+     
+     <!--  <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" style="">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+              <img src="..." class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Онлайн тренажер с упражнениями и курсами по SQL</h5>
+                <p>Освой SQL - научись создавать собственные базы данных и составлять
+                  запросы к ним</p>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+              <img src="..." class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Метка второго слайда</h5>
+                <p>Некоторый репрезентативный заполнитель для второго слайда.</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="..." class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Метка третьего слайда</h5>
+                <p>Некоторый репрезентативный заполнитель для третьего слайда.</p>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"  data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Предыдущий</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"  data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Следующий</span>
+          </button>
+        </div>
+        <div class="container-fluid">  --> 
+
+       <div class="maintitle">
           <div class="name_of">
             Онлайн тренажер с упражнениями и курсами по SQL
           </div>
@@ -26,7 +88,7 @@
             запросы к ним
           </div>
         </div>
-
+        
         <div class="info_on_page">
           <div class="info_add">
             <div class="part1 part4"><p>Курсы по SQL</p></div>
@@ -47,24 +109,12 @@
         </div>
         <button id="test">ПРОВЕРКА</button>
         <div id="test1"></div>
+      </div>
       </main>
 
-      <%- include('blocks/footer') -%>
-    </div>
-    <script>
-      var el = document.getElementById("test");
-      if (el) {
-        el.addEventListener("click", getTest);
-      }
-
-      function getTest() {
-        fetch("./sample.txt")
-          .then((res) => res.text())
-          .then((data) => {
-            document.getElementById("test1").innerHTML = data;
-          })
-          .catch((err) => console.log(err));
-      }
-    </script>
+    <%- include('blocks/footer') -%>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   </body>
 </html>

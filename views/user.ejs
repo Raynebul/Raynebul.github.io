@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/header_and_footer.css" />
+    <%- include('blocks/head') -%> 
     <link rel="stylesheet" href="/css/user-style.css" />
     <title>Страница пользователя</title>
   </head>
@@ -14,15 +11,52 @@
       type="text/javascript"
       src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"
     ></script>
+    <%- include('blocks/header') -%>
+    <div class="container-fluid">
 
-    <div class="wrapper">
-      <%- include('blocks/header') -%>
       <main>
         <!-- свойства для блока, содержащего контент модального окна -->
         <%- include('blocks/log-in') -%>
         <!--  свойства для блока, содержащего контент модального окна -->
         <h1>Страница пользователя: <%= username %></h1>
-        <div class="usercard">
+
+        <div class="card shadow" style="width: 54rem; margin: 1rem;">
+          <div class="card-body">
+            <div class="card mb-3" style="max-width: 540px; border: none;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="/img/free-settings-icon-3110-thumb.png" class="img-fluid rounded-start" alt="..." width="100" height="100">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= username %></h5>
+                    <p class="card-text"><%= email %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-text">Созданные проекты: </div>
+            <div class="card-text" id="createdprojects">
+              <table>
+                <% for(var i=0; i < data.length; i++) { %>
+                <tr>
+                  <td>
+                    <a href="/sandbox/<%= data[i].id %>"
+                      ><%= data[i].projectname %></a
+                    >
+                  </td>
+                  <td><%= data[i].projectDescription %></td>
+                </tr>
+                <% } %>
+              </table>
+            </div>
+            <form class="form" action="/" method="post">
+              <button class="btn btn-primary">Выйти из аккаунта</button>
+            </form>
+          </div>
+        </div>
+
+    <!--    <div class="usercard">
           <div class="top_usercard">
             <div class="avatar"></div>
             <div class="username_and_mail">
@@ -42,27 +76,13 @@
               <p>Пройденный курсы</p>
             </div>
 
-            <div id="createdprojects">
-              <table>
-                <% for(var i=0; i < data.length; i++) { %>
-                <tr>
-                  <td>
-                    <a href="/sandbox/<%= data[i].id %>"
-                      ><%= data[i].projectname %></a
-                    >
-                  </td>
-                  <td><%= data[i].projectDescription %></td>
-                </tr>
-                <% } %>
-              </table>
-            </div>
-            <form class="form" action="/" method="post">
-              <button class="exitprofile">Выйти из аккаунта</button>
-            </form>
+
+
           </div>
-        </div>
+        </div> -->
       </main>
-      <%- include('blocks/footer') -%>
+
     </div>
+    <%- include('blocks/footer') -%>
   </body>
 </html>
