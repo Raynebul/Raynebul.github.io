@@ -128,23 +128,49 @@
 
                   <div class="form-check form-switch">
                     <% if(data.autosave=="true") { %>
-                    <input name="autosave" class="form-check-input" type="checkbox" checked id="flexSwitchCheckDefault">
+                    <input
+                      name="autosave"
+                      class="form-check-input"
+                      type="checkbox"
+                      checked
+                      id="flexSwitchCheckDefault"
+                    />
                     <% } else { %>
-                      <input name="autosave" class="form-check-input" type="checkbox"id="flexSwitchCheckDefault">
-                      <% } %>
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Автосохранения</label>
+                    <input
+                      name="autosave"
+                      class="form-check-input"
+                      type="checkbox"
+                      id="flexSwitchCheckDefault"
+                    />
+                    <% } %>
+                    <label class="form-check-label" for="flexSwitchCheckDefault"
+                      >Автосохранения</label
+                    >
                   </div>
 
                   <div class="form-check form-switch">
                     <% if(data.private=="true") { %>
-                      <input name="private" class="form-check-input" type="checkbox" checked id="flexSwitchCheckDefault">
-                      <% } else { %>
-                        <input name="private" class="form-check-input" type="checkbox"id="flexSwitchCheckDefault">
-                        <% } %>
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Приватный</label>
+                    <input
+                      name="private"
+                      class="form-check-input"
+                      type="checkbox"
+                      checked
+                      id="flexSwitchCheckDefault"
+                    />
+                    <% } else { %>
+                    <input
+                      name="private"
+                      class="form-check-input"
+                      type="checkbox"
+                      id="flexSwitchCheckDefault"
+                    />
+                    <% } %>
+                    <label class="form-check-label" for="flexSwitchCheckDefault"
+                      >Приватный</label
+                    >
                   </div>
 
-                 <!-- <p id="autosave">Автосохранения</p>
+                  <!-- <p id="autosave">Автосохранения</p>
                   <div class="switchbox">
                     <label class="switch" style="font-size: 0.7rem">
                       <% if(data.autosave=="true") { %>
@@ -196,11 +222,7 @@
             <div id="Username">от: <%= data.author %></div>
           </div>
           <div class="buttons">
-            <button
-              form="myform1"
-              class="run1 btn btn-success"
-              type="submit"
-            >
+            <button form="myform1" class="run1 btn btn-success" type="submit">
               Выполнить
             </button>
             <button
@@ -227,9 +249,11 @@
             <div class="col">
               <div class="SQLScript">
                 <div class="elem1">
-                  <h3><div class="badge bg-light text-dark shadow-sm">
-                    SQL Script
-                  </div></h3>
+                  <h3>
+                    <div class="badge bg-light text-dark shadow-sm">
+                      SQL Script
+                    </div>
+                  </h3>
                   <button
                     class="clear1 btn btn-light shadow-sm"
                     onclick="eraseTheText('outputSQLScript')"
@@ -270,9 +294,11 @@
             <div class="col">
               <div class="SQLQuery">
                 <div class="elem2">
-                 <h3><div class="badge bg-light text-dark shadow-sm">
-                    SQL Query
-                  </div></h3> 
+                  <h3>
+                    <div class="badge bg-light text-dark shadow-sm">
+                      SQL Query
+                    </div>
+                  </h3>
                   <button
                     class="clear1 btn btn-light shadow-sm"
                     onclick="eraseTheText('outputSQLquery')"

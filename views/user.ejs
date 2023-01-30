@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%- include('blocks/head') -%> 
+    <%- include('blocks/head') -%>
     <link rel="stylesheet" href="/css/user-style.css" />
     <title>Страница пользователя</title>
   </head>
@@ -13,19 +13,24 @@
     ></script>
     <%- include('blocks/header') -%>
     <div class="container-fluid">
-
       <main>
         <!-- свойства для блока, содержащего контент модального окна -->
         <%- include('blocks/log-in') -%>
         <!--  свойства для блока, содержащего контент модального окна -->
         <h1>Страница пользователя: <%= username %></h1>
 
-        <div class="card shadow" style="width: 54rem; margin: 1rem;">
+        <div class="card shadow" style="width: 54rem; margin: 1rem">
           <div class="card-body">
-            <div class="card mb-3" style="max-width: 540px; border: none;">
+            <div class="card mb-3" style="max-width: 540px; border: none">
               <div class="row g-0">
                 <div class="col-md-4">
-                  <img src="/img/free-settings-icon-3110-thumb.png" class="img-fluid rounded-start" alt="..." width="100" height="100">
+                  <img
+                    src="/img/free-settings-icon-3110-thumb.png"
+                    class="img-fluid rounded-start"
+                    alt="..."
+                    width="100"
+                    height="100"
+                  />
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
@@ -35,7 +40,7 @@
                 </div>
               </div>
             </div>
-            <div class="card-text">Созданные проекты: </div>
+            <div class="card-text">Созданные проекты:</div>
             <div class="card-text" id="createdprojects">
               <table>
                 <% for(var i=0; i < data.length; i++) { %>
@@ -56,7 +61,7 @@
           </div>
         </div>
 
-    <!--    <div class="usercard">
+        <!--    <div class="usercard">
           <div class="top_usercard">
             <div class="avatar"></div>
             <div class="username_and_mail">
@@ -81,7 +86,6 @@
           </div>
         </div> -->
       </main>
-
     </div>
     <%- include('blocks/footer') -%>
   </body>
